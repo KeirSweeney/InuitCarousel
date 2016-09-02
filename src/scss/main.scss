@@ -1,0 +1,69 @@
+/*
+** - CUSTOM VARIABLES
+*/
+@import 'variables';
+@import 'overwrites';
+
+
+/*
+** - SETTINGS
+*/
+// Global variables, site-wide settings, config switches, etc.
+@import '../../node_modules/inuit-defaults/settings.defaults';
+@import '../../node_modules/inuit-responsive-settings/settings.responsive';
+
+@import './settings/settings.breakpoints';
+
+
+/*
+** - TOOLS
+*/
+// Site-wide mixins and functions.
+@import '../../node_modules/inuit-functions/tools.functions';
+@import '../../node_modules/inuit-mixins/tools.mixins';
+@import '../../node_modules/inuit-tools-widths/tools.widths';
+@import '../../node_modules/inuit-responsive-tools/tools.responsive';
+
+@import './tools/tools.functions';
+@import './tools/tools.mixins';
+
+
+/*
+** - GENERIC
+*/
+// Low-specificity, far-reaching rulesets (e.g. resets).
+@import '../../node_modules/inuit-normalize/generic.normalize';
+@import '../../node_modules/inuit-box-sizing/generic.box-sizing';
+
+
+/*
+** - BASE
+*/
+// Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).
+@import '../../node_modules/inuit-page/base.page';
+
+@import './base/base.elements';
+
+
+/*
+** - OBJECTS
+*/
+// Objects, abstractions, and design patterns (e.g. .media {}).
+@import '../../node_modules/inuit-layout/objects.layout';
+
+
+/*
+** - COMPONENTS
+*/
+// Discrete, complete chunks of UI (e.g. .carousel {}). This is the one layer that inuitcss doesn’t get involved with.
+
+
+/*
+** - TRUMPS
+*/
+// High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).
+@import '../../node_modules/inuit-responsive-widths/trumps.widths-responsive';
+@import '../../node_modules/inuit-widths/trumps.widths';
+@import '../../node_modules/inuit-spacing/trumps.spacing';
+
+@import './trumps/trumps.helpers';

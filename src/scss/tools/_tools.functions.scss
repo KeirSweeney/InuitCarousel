@@ -1,0 +1,10 @@
+// Converts px to rem (will convert either with the pixel value or without, i.e em(16) and em(16px))
+@function rem($pixels, $context: $font-size-base) {
+    @if (unitless($pixels)) {
+        $pixels: $pixels * 1px;
+    }
+    @if (unitless($context)) {
+        $context: $context * 1px;
+    }
+    @return $pixels / $context * 1rem;
+}
