@@ -7,8 +7,8 @@
 
 /*
 ** - SETTINGS
-*/
-// Global variables, site-wide settings, config switches, etc.
+*
+/* Global variables, site-wide settings, config switches, etc.*/
 @import '../../node_modules/inuit-defaults/settings.defaults';
 @import '../../node_modules/inuit-responsive-settings/settings.responsive';
 
@@ -17,8 +17,8 @@
 
 /*
 ** - TOOLS
-*/
-// Site-wide mixins and functions.
+*
+/* Site-wide mixins and functions.*/
 @import '../../node_modules/inuit-functions/tools.functions';
 @import '../../node_modules/inuit-mixins/tools.mixins';
 @import '../../node_modules/inuit-tools-widths/tools.widths';
@@ -31,7 +31,7 @@
 /*
 ** - GENERIC
 */
-// Low-specificity, far-reaching rulesets (e.g. resets).
+/* Low-specificity, far-reaching rulesets (e.g. resets).*/
 @import '../../node_modules/inuit-normalize/generic.normalize';
 @import '../../node_modules/inuit-box-sizing/generic.box-sizing';
 
@@ -39,7 +39,7 @@
 /*
 ** - BASE
 */
-// Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).
+/* Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).*/
 @import '../../node_modules/inuit-page/base.page';
 
 @import './base/base.elements';
@@ -48,20 +48,20 @@
 /*
 ** - OBJECTS
 */
-// Objects, abstractions, and design patterns (e.g. .media {}).
+/* Objects, abstractions, and design patterns (e.g. .media {}).*/
 @import '../../node_modules/inuit-layout/objects.layout';
 
 
 /*
 ** - COMPONENTS
 */
-// Discrete, complete chunks of UI (e.g. .carousel {}). This is the one layer that inuitcss doesn’t get involved with.
+/* Discrete, complete chunks of UI (e.g. .carousel {}). This is the one layer that inuitcss doesn’t get involved with.*/
 
 
 /*
 ** - TRUMPS
 */
-// High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).
+/* High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).*/
 @import '../../node_modules/inuit-responsive-widths/trumps.widths-responsive';
 @import '../../node_modules/inuit-widths/trumps.widths';
 @import '../../node_modules/inuit-spacing/trumps.spacing';
