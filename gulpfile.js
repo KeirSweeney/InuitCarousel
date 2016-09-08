@@ -56,8 +56,8 @@ gulp.task('sass:watch',['sass'], function() {
 
 gulp.task('browser:watch',['browserSync', 'sass', 'html'], function() {
   gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
-  gulp.watch('src/*.html', ['html']);
-  gulp.watch('src/*.html').on('change', browserSync.reload);
+  // gulp.watch('src/*.html', ['html']);
+  gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
   //gulp.watch('src/js/**/*.js', browserSync.reload);
 });
 
