@@ -6,7 +6,7 @@ I will be using [**Inuit**](https://github.com/inuitcss/inuitcss) for the css st
 
 I will also be using [**Gulp**](http://gulpjs.com/) as the task runner.
 
-### ITCSS
+## ITCSS
 
     -------------   SETTINGS    (Variable declarations)
      -----------    TOOLS       (functions, mixins, placeholders)
@@ -16,8 +16,14 @@ I will also be using [**Gulp**](http://gulpjs.com/) as the task runner.
          ---        COMPONENTS  (component level styling)
           -         TRUMPS      (!importants)
 
+###B.E.M.
+[B.E.M.](https://en.bem.info/methodology/quick-start/)
+Naming of classes and JS
+
 ## INSALLATION
 
     run npm install
     run gulp (check that gulp will compile the sass)
     run gulp browser:watch (to boot up browser sync)
+##
+
