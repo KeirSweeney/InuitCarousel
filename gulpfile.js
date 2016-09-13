@@ -7,7 +7,8 @@ var gulp = require("gulp"),
     autoprefixer = require("gulp-autoprefixer"),
     cleanCSS = require("gulp-clean-css"),
     browserSync = require("browser-sync").create(),
-    imagemin = require("gulp-imagemin");
+    imagemin = require("gulp-imagemin"),
+    cache = require('gulp-cache');
 
 //paths
 var paths = {
@@ -49,10 +50,10 @@ gulp.task('html', function() {
 gulp.task('images', function()
 {
   return gulp.src(paths.image.src)
-  .pipe(imagemin({
+  .pipe(cache(imagemin({
     //Set interalaced to true for optimising GIFs
     interalaced: true,
-  }))
+  })))
   .pipe(gulp.dest(paths.image.dist))
 });
 
@@ -69,9 +70,9 @@ gulp.task('sass:watch',['sass'], function() {
   gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch',['browserSync','image', 'sass', 'html'], function() {
-  gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
-  // gulp.watch('src/*.html', ['html']);
+gulp.task('browser:watch',['browserSync','images', 'sass', 'html'], function() {
+  gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
+  gulp.watch('src/*.html', ['html']);
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
   //gulp.watch('src/js/**/*.js', browserSync.reload);
 });
