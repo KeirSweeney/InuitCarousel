@@ -1,6 +1,7 @@
 .carousel-outer {
   background-color: white;
   text-align: center;
+  transform: translateY(10%);
   margin: auto;
   position: relative;
   width: 66%;
@@ -21,4 +22,30 @@
 
 .three-two {
   @include aspect-ratio(3, 2);
+}
+
+.content {
+  margin: 0;
+  padding: 0;
+
+}
+
+.content li {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  list-style: none;
+  text-align: center;
+  position: absolute;
+}
+
+.active {
+  height: 130px;
+}
+.active li {
+  position: absolute;
+  top: 0;
+}
+.active li.current {
+  top: 0;
 }

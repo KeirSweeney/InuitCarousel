@@ -17,6 +17,10 @@ var paths = {
   html: {
     src: './src/index.html',
     dist: './dist/html/'
+  },
+  image: {
+    src: './src/images/*.png',
+    dist: './dist/images/'
   }
 }
 
@@ -41,6 +45,12 @@ gulp.task('html', function() {
 
 });
 
+gulp.task('image', function()
+{
+  return gulp.src(paths.image.src)
+  .pipe(gulp.dest(paths.image.dist))
+});
+
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
@@ -54,7 +64,7 @@ gulp.task('sass:watch',['sass'], function() {
   gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch',['browserSync', 'sass', 'html'], function() {
+gulp.task('browser:watch',['browserSync','image', 'sass', 'html'], function() {
   gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
   // gulp.watch('src/*.html', ['html']);
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
