@@ -6,7 +6,8 @@ var gulp = require("gulp"),
     sass = require("gulp-sass"),
     autoprefixer = require("gulp-autoprefixer"),
     cleanCSS = require("gulp-clean-css"),
-    browserSync = require("browser-sync").create();
+    browserSync = require("browser-sync").create(),
+    imagemin = require("gulp-imagemin");
 
 //paths
 var paths = {
@@ -19,7 +20,7 @@ var paths = {
     dist: './dist/html/'
   },
   image: {
-    src: './src/images/*.png',
+    src: './src/images/*.+(png|jpg|gif|svg)',
     dist: './dist/images/'
   }
 }
@@ -45,9 +46,13 @@ gulp.task('html', function() {
 
 });
 
-gulp.task('image', function()
+gulp.task('images', function()
 {
   return gulp.src(paths.image.src)
+  .pipe(imagemin({
+    //Set interalaced to true for optimising GIFs
+    interalaced: true,
+  }))
   .pipe(gulp.dest(paths.image.dist))
 });
 
