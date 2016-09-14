@@ -6,7 +6,9 @@ var gulp = require("gulp"),
     sass = require("gulp-sass"),
     autoprefixer = require("gulp-autoprefixer"),
     cleanCSS = require("gulp-clean-css"),
-    browserSync = require("browser-sync").create();
+    browserSync = require("browser-sync").create(),
+    imagemin = require("gulp-imagemin"),
+    cache = require('gulp-cache');
 
 //paths
 var paths = {
@@ -17,6 +19,10 @@ var paths = {
   html: {
     src: './src/index.html',
     dist: './dist/html/'
+  },
+  image: {
+    src: './src/images/*.+(png|jpg|gif|svg)',
+    dist: './dist/images/'
   }
 }
 
@@ -41,6 +47,16 @@ gulp.task('html', function() {
 
 });
 
+gulp.task('images', function()
+{
+  return gulp.src(paths.image.src)
+  .pipe(cache(imagemin({
+    //Set interalaced to true for optimising GIFs
+    interalaced: true,
+  })))
+  .pipe(gulp.dest(paths.image.dist))
+});
+
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
@@ -54,9 +70,9 @@ gulp.task('sass:watch',['sass'], function() {
   gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch',['browserSync', 'sass', 'html'], function() {
-  gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
-  // gulp.watch('src/*.html', ['html']);
+gulp.task('browser:watch',['browserSync','images', 'sass', 'html'], function() {
+  gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
+  gulp.watch('src/*.html', ['html']);
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
   //gulp.watch('src/js/**/*.js', browserSync.reload);
 });
