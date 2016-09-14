@@ -28,7 +28,12 @@ var paths = {
 
 gulp.task('sass', function() {
   return gulp.src(paths.styles.src)
-    .pipe(plumber())
+    .pipe(plumber({
+      errorHandler: function (err) {
+        console.log(err.message);
+        this.emit('end');
+      }
+    }))
     .pipe(autoprefixer({
       browsers: ['last 2 versions']
     }))
@@ -70,10 +75,10 @@ gulp.task('sass:watch',['sass'], function() {
   gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch',['browserSync','images', 'sass', 'html'], function() {
-  gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
-  gulp.watch('src/*.html', ['html']);
+gulp.task('browser:watch',['browserSync','sass','html','images'], function() {
+  gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
+  gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
   //gulp.watch('src/js/**/*.js', browserSync.reload);
 });
 

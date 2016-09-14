@@ -27,25 +27,38 @@
 .content {
   margin: 0;
   padding: 0;
-
-}
-
-.content li {
-  margin: 0;
-  padding: 0;
   width: 100%;
   list-style: none;
   text-align: center;
-  position: absolute;
+  position: relative;
 }
 
-.active {
-  height: 130px;
+.content li img{
+  position: relative;
+  width: 100%;
+  padding: 0;
+  z-index: 0;
 }
-.active li {
+
+.content li h2{
+  position: absolute;
+  font-size: 2vw;
+  left: 0;
+  right: 0;
+  top: 10%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*.carousel-inner {
+  height: 100%;
+  position: absolute;
+}
+.carousel-inner li {
   position: absolute;
   top: 0;
 }
-.active li.current {
+
+.carousel-inner li.current {
   top: 0;
-}
+}*/
