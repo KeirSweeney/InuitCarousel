@@ -15,14 +15,23 @@
 .carousel-indicators
 {
   display: inline-block;
+  list-style: none;
 }
 .carousel-indicators li {
-  list-style: none;
   height: 1vw;
+  float: left;
+  margin-right: 2px;
+  margin-left: 2px;
   width: 1vw;
   background-color: black;
-  border-radius: 20px;
+  border-radius: 50px;
   font-size: 3vw;
+  /*opacity: 0.1;
+  transition-duration: 1s;*/
+}
+
+.carousel-indicators li:hover {
+  opacity: 1;
 }
 
 .carousel-inner button:hover {
