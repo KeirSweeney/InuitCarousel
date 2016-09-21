@@ -12,16 +12,29 @@
   border-color: grey;
 }
 
-.four-three {
-   @include aspect-ratio(4, 3);
+.carousel-indicators
+{
+  display: inline-block;
+}
+.carousel-indicators li {
+  list-style: none;
+  height: 1vw;
+  width: 1vw;
+  background-color: black;
+  border-radius: 20px;
+  font-size: 3vw;
 }
 
-.sixteen-nine {
-  @include aspect-ratio(16, 9);
+.carousel-inner button:hover {
+  opacity: 1;
 }
 
-.three-two {
-  @include aspect-ratio(3, 2);
+.buttonLeft {
+  @include carousel-btn(left);
+}
+
+.buttonRight {
+  @include carousel-btn(right);
 }
 
 .content {
@@ -50,15 +63,14 @@
   margin-right: auto;
 }
 
-/*.carousel-inner {
-  height: 100%;
-  position: absolute;
-}
-.carousel-inner li {
-  position: absolute;
-  top: 0;
+.four-three {
+   @include aspect-ratio(4, 3);
 }
 
-.carousel-inner li.current {
-  top: 0;
-}*/
+.sixteen-nine {
+  @include aspect-ratio(16, 9);
+}
+
+.three-two {
+  @include aspect-ratio(3, 2);
+}
