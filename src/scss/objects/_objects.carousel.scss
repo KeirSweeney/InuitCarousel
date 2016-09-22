@@ -12,22 +12,32 @@
   border-color: grey;
 }
 
-.carousel-indicators
-{
-  display: inline-block;
+.carousel-indicators {
+  text-align: center;
+  right:50%;
+  bottom: 0;
   list-style: none;
-}
+  position: absolute;
+  transform: translateX(50%);
+  }
+
 .carousel-indicators li {
+  position: relative;
+  display: inline-block;
   height: 1vw;
-  float: left;
-  margin-right: 2px;
-  margin-left: 2px;
   width: 1vw;
+  float: left;
+  margin-right: 0.3vw;
+  margin-left: auto;
   background-color: black;
-  border-radius: 50px;
+  border-radius: 100%;
   font-size: 3vw;
-  /*opacity: 0.1;
-  transition-duration: 1s;*/
+  opacity: 0.1;
+  transition-duration: 1s;
+}
+
+#current {
+  opacity: 1;
 }
 
 .carousel-indicators li:hover {
