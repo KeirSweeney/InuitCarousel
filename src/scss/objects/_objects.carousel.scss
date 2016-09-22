@@ -12,17 +12,36 @@
   border-color: grey;
 }
 
-.carousel-indicators
-{
-  display: inline-block;
-}
-.carousel-indicators li {
+.carousel-indicators {
+  text-align: center;
+  right:50%;
+  bottom: 0;
   list-style: none;
+  position: absolute;
+  transform: translateX(50%);
+  }
+
+.carousel-indicators li {
+  position: relative;
+  display: inline-block;
   height: 1vw;
   width: 1vw;
+  float: left;
+  margin-right: 0.3vw;
+  margin-left: auto;
   background-color: black;
-  border-radius: 20px;
+  border-radius: 100%;
   font-size: 3vw;
+  opacity: 0.1;
+  transition-duration: 1s;
+}
+
+#current {
+  opacity: 1;
+}
+
+.carousel-indicators li:hover {
+  opacity: 1;
 }
 
 .carousel-inner button:hover {
