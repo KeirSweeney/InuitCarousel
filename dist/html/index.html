@@ -2,7 +2,7 @@
 <html lang="en-GB">
   <head>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="dist/js/jquery-carousel.js"></script>
+    <script src="../js/jquery-carousel.js"></script>
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-store" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -12,7 +12,6 @@
   </head>
   <body>
     <div class="carousel-outer three-two">
-      <div class="carousel-inner">
         <button class="buttonRight" type="button">Next</button>
         <button class="buttonLeft" type="button">Back</button>
         <ul class="carousel-indicators">
@@ -21,19 +20,16 @@
           <li></li>
         </ul>
         <ol class="content">
-          <li>
-            <img src="../images/32.png" alt="">
-            <h2 class="active">Slide 1</h2>
+          <div class="title">Slide 1</div>
+          <li class="active">
+            <img src="../images/32.png" alt="Image1">
           </li>
           <li>
-            <h2>Slide 2</h2>
-            <img src="../images/32.png" alt="">
+            <img src="../images/3by2.jpg" alt="Image2">
           </li>
           <li>
-            <h2>Slide 3</h2>
-            <img src="../images/32.png" alt="">
+            <img src="../images/3by22.png" alt="Image3">
           </li>
-        </div>
       </ol>
     </div>
   </body>
