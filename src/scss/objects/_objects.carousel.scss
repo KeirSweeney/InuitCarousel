@@ -19,6 +19,7 @@
   list-style: none;
   position: absolute;
   transform: translateX(50%);
+  z-index: 1;
   }
 
 .carousel-indicators li {
@@ -34,6 +35,7 @@
   font-size: 3vw;
   opacity: 0.1;
   transition-duration: 1s;
+
 }
 
 #current {
@@ -50,10 +52,12 @@
 
 .buttonLeft {
   @include carousel-btn(left);
+  z-index: 1;
 }
 
 .buttonRight {
   @include carousel-btn(right);
+  z-index: 1;
 }
 
 .content {
@@ -63,13 +67,14 @@
   list-style: none;
   text-align: center;
   position: relative;
-}
+  }
 
 .content li img{
-  position: relative;
+  position: absolute;
+  left: 0;
   width: 100%;
   padding: 0;
-  z-index: 0;
+  z-index: -1;
 }
 
 .content li h2{
@@ -80,6 +85,7 @@
   top: 10%;
   margin-left: auto;
   margin-right: auto;
+  z-index: 1;
 }
 
 .four-three {
