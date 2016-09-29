@@ -6,6 +6,8 @@ I will be using [**Inuit**](https://github.com/inuitcss/inuitcss) for the css st
 
 I will also be using [**Gulp**](http://gulpjs.com/) as the task runner.
 
+A demo of the carousel is hosted [**HERE**](https://keirsweeney.github.io/InuitCarousel/dist/html/).
+
 ## ITCSS
 
     -------------   SETTINGS    (Variable declarations)
