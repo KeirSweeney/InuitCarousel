@@ -20,13 +20,26 @@
   Plugin.prototype = {
     init: function() {
       //add initialisation here
-      var imageCount = $("#images img").length;
-      console.log("Number of images " + imageCount);
+      this.imageCount = $("#images img").length;
+      console.log("Number of images " + this.imageCount);
+      this.createDots();
+    },
+
+    createDots: function(){
+      if(this.imageCount > 0)
+      {
+        for(var i = 0; i < this.imageCount; i++)
+        {
+          $( ".carousel-indicators" ).append( "<li></li>" );
+        }
+      }
     },
 
     setDotIndex: function(index) {
 
     }
+
+
   };
 
   $.fn[pluginName] = function(options) {
