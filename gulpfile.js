@@ -1,14 +1,14 @@
 'use strict';
 
 var gulp = require("gulp"),
-    watch = require("gulp-watch"),
-    plumber = require("gulp-plumber"),
-    sass = require("gulp-sass"),
-    autoprefixer = require("gulp-autoprefixer"),
-    cleanCSS = require("gulp-clean-css"),
-    browserSync = require("browser-sync").create(),
-    imagemin = require("gulp-imagemin"),
-    cache = require('gulp-cache');
+  watch = require("gulp-watch"),
+  plumber = require("gulp-plumber"),
+  sass = require("gulp-sass"),
+  autoprefixer = require("gulp-autoprefixer"),
+  cleanCSS = require("gulp-clean-css"),
+  browserSync = require("browser-sync").create(),
+  imagemin = require("gulp-imagemin"),
+  cache = require('gulp-cache');
 
 //paths
 var paths = {
@@ -33,7 +33,7 @@ var paths = {
 gulp.task('sass', function() {
   return gulp.src(paths.styles.src)
     .pipe(plumber({
-      errorHandler: function (err) {
+      errorHandler: function(err) {
         console.log(err.message);
         this.emit('end');
       }
@@ -43,7 +43,9 @@ gulp.task('sass', function() {
     }))
     .pipe(sass())
     .pipe(sass().on('error', sass.logError))
-    .pipe(cleanCSS({compatibility: 'ie8'}))
+    .pipe(cleanCSS({
+      compatibility: 'ie8'
+    }))
     .pipe(gulp.dest(paths.styles.dist))
     .pipe(browserSync.reload({
       stream: true
@@ -52,43 +54,41 @@ gulp.task('sass', function() {
 
 gulp.task('js', function() {
   return gulp.src(paths.js.src)
-  .pipe(gulp.dest(paths.js.dist))
+    .pipe(gulp.dest(paths.js.dist))
 });
 
 gulp.task('html', function() {
   return gulp.src(paths.html.src)
-  .pipe(gulp.dest(paths.html.dist))
+    .pipe(gulp.dest(paths.html.dist))
 });
 
-gulp.task('images', function()
-{
+gulp.task('images', function() {
   return gulp.src(paths.image.src)
-  .pipe(cache(imagemin({
-    //Set interalaced to true for optimising GIFs
-    interalaced: true,
-  })))
-  .pipe(gulp.dest(paths.image.dist))
+    .pipe(cache(imagemin({
+      //Set interalaced to true for optimising GIFs
+      interalaced: true,
+    })))
+    .pipe(gulp.dest(paths.image.dist))
 });
 
 gulp.task('browserSync', function() {
   browserSync.init({
     server: {
-      baseDir : 'dist'
+      baseDir: 'dist'
     },
     startPath: '/html'
   });
 });
 
-gulp.task('sass:watch',['sass'], function() {
-  gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
+gulp.task('sass:watch', ['sass'], function() {
+  gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch',['browserSync','sass','html', 'js','images'], function() {
-  gulp.watch(['src/scss/*.scss','src/scss/**/*.scss'], ['sass']);
+gulp.task('browser:watch', ['browserSync', 'sass', 'html', 'js', 'images'], function() {
+  gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
   gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
   gulp.watch('src/js/*.js', ['js']).on('change', browserSync.reload);
 });
 
 gulp.task('default', ['sass']);
-
