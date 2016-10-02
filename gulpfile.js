@@ -8,7 +8,10 @@ var gulp = require("gulp"),
   cleanCSS = require("gulp-clean-css"),
   browserSync = require("browser-sync").create(),
   imagemin = require("gulp-imagemin"),
-  cache = require('gulp-cache');
+  cache = require('gulp-cache'),
+  useref = require('gulp-useref'),
+  uglify = require('gulp-uglify'),
+  gulpIf = require('gulp-if');
 
 //paths
 var paths = {
@@ -52,6 +55,12 @@ gulp.task('sass', function() {
     }))
 });
 
+gulp.task('useref', function() {
+  return gulp.src('/src/*.html')
+    .pipe(useref())
+    .pipe(gulp.dest('dist'))
+});
+
 gulp.task('js', function() {
   return gulp.src(paths.js.src)
     .pipe(gulp.dest(paths.js.dist))
@@ -84,7 +93,7 @@ gulp.task('sass:watch', ['sass'], function() {
   gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch', ['browserSync', 'sass', 'html', 'js', 'images'], function() {
+gulp.task('browser:watch', ['browserSync', 'sass', 'html', 'useref', 'js', 'images'], function() {
   gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
   gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
   gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);

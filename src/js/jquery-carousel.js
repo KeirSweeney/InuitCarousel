@@ -32,6 +32,7 @@
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
         e.preventDefault();
+        console.log("button right pressed");
         // this.setActiveDot(this.currentDotIndex++);
       }, this));
 
@@ -44,7 +45,7 @@
 
     createDots: function() {
       if (this.imageCount > 0) {
-        for (var i = 0; i < this.imageCount; i++) {
+        for (var i = 1; i < this.imageCount; i++) {
           $(".carousel-indicators").append("<li></li>");
         }
       }
