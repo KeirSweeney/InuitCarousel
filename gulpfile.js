@@ -96,9 +96,9 @@ gulp.task('sass:watch', ['sass'], function() {
 
 gulp.task('browser:watch', ['browserSync', 'sass','useref', 'images'], function() {
   gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
-  gulp.watch('src/*.html', ['html']).on('change', browserSync.reload);
+  gulp.watch('src/*.html', ['useref']).on('change', browserSync.reload);
   gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
-  gulp.watch('src/js/*.js', ['js']).on('change', browserSync.reload);
+  gulp.watch('src/js/*.js', ['useref']).on('change', browserSync.reload);
 });
 
 gulp.task('default', ['sass']);

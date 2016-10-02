@@ -1,4 +1,5 @@
-;(function($, window, undefined) {
+;
+(function($, window, undefined) {
 
   "use strict";
 
@@ -18,6 +19,7 @@
 
   Plugin.prototype = {
     init: function() {
+      // if(jQuery == undefined)
       //add initialisation here
       this.imageCount = $("#slides img").length;
       // this.slideObjects = this.getSlides();
@@ -32,7 +34,7 @@
       this.buttonRight.click($.proxy(function(e) {
         e.preventDefault();
         console.log("button right pressed");
-        // this.setActiveDot(this.currentDotIndex++);
+        this.setActiveDot(this.setActiveDot(1));
       }, this));
 
       this.buttonLeft.click($.proxy(function(e) {
@@ -74,7 +76,13 @@
         }
 
       } else {
-        dots[dotIndex].id = "active";
+        if ((dotIndex - 1) < 0) {
+          slides[0].id = "current";
+          this.setActiveDot();
+        } else {
+          slides[dotIndex - 1].id = "";
+          slides[dotIndex].id = "current";
+        }
       }
     },
 
