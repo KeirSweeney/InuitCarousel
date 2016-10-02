@@ -1,5 +1,4 @@
-;
-(function($, window, undefined) {
+;(function($, window, undefined) {
 
   "use strict";
 
@@ -45,7 +44,7 @@
 
     createDots: function() {
       if (this.imageCount > 0) {
-        for (var i = 1; i < this.imageCount; i++) {
+        for (var i = 0; i < this.imageCount; i++) {
           $(".carousel-indicators").append("<li></li>");
         }
       }
