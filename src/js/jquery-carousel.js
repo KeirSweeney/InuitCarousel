@@ -36,12 +36,13 @@
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() + 1;
         this.setActiveSlide(currentIndex,nextIndex);
-        // this.setActiveDot();
       }, this));
 
       this.buttonLeft.click($.proxy(function(e) {
         e.preventDefault();
-        // this.setActiveDot(this.curentSlideIndex--);
+        var currentIndex = this.getCurrentSlideIndex();
+        var nextIndex = this.getCurrentSlideIndex() - 1;
+        this.setActiveSlide(currentIndex,nextIndex);
       }, this));
       //TODO rewrite this to change a method that is a set and get of the global slide index. Hence using the same index for both the dots and the slides
     },
@@ -72,7 +73,7 @@
       for (var i = 0; i < slides.length; i++) {
         if (slides[i].id === "current") {
           this.curentSlideIndex = i;
-          this.setActiveDot(i);
+          this.enableNextDot(i);
         } //TODO add default starting slide if user doesn't enter one
       }
     },
@@ -86,14 +87,14 @@
       this.curentSlideIndex = nextIndex;
 
       slides[nextIndex].id = "current";
-      this.setActiveDot(nextIndex);
+      this.enableNextDot(nextIndex);
     },
 
     getCurrentSlideIndex : function() {
       return this.curentSlideIndex;
     },
 
-    setActiveDot: function(nextIndex) {
+    enableNextDot: function(nextIndex) {
       var dots = this.getDots();
       dots[nextIndex].id = "active";
     },
@@ -102,16 +103,6 @@
       var dots = this.getDots();
       dots[prevDot].id = "";
     },
-
-    // setSlideIndex: function(index) {
-    //   this.curentSlideIndex = index;
-    // },
-
-    // getSlideIndex: function() {
-    //   return this.curentSlideIndex;
-    // },
-
-
 
   };
 

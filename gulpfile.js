@@ -100,7 +100,7 @@ gulp.task('sass:watch', ['sass'], function() {
   gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch', ['browserSync', 'sass','clean:dist','useref', 'images'], function() {
+gulp.task('browser:watch', ['browserSync', 'clean:dist','sass','useref', 'images'], function() {
   gulp.watch(['src/scss/**/*.scss'], ['sass']);
   gulp.watch('src/*.html', ['useref']).on('change', browserSync.reload);
   gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
