@@ -24,3 +24,11 @@
   border: 0;
   z-index: 1;
 }
+
+@mixin image-alignment($axis)
+{
+  @if($axis == verticalAllign) {}
+  @if($axis == horizontalAllign) {}
+
+
+}

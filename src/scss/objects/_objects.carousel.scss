@@ -9,7 +9,7 @@
   border-width: 4px;
   border-radius: 5px;
   border-color: grey;
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 .carousel-indicators {
@@ -67,6 +67,20 @@
   position: absolute;
 }
 
+.vertical {
+
+}
+
+.horizontal {
+  white-space: nowrap;
+  padding: 0;
+}
+.horizontal li {
+  display: inline;
+  vertical-align: middle;
+}
+
+
 .title {
   position: absolute;
   font-size: 2vw;
@@ -76,12 +90,6 @@
   top: 1%;
   margin-left: 0;
   margin-right: 0;
-}
-
-.content li {
-  left: 0;
-  padding: 0;
-  z-index: 0;
 }
 
 .content li img {
