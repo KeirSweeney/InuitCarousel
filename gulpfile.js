@@ -11,7 +11,8 @@ var gulp = require("gulp"),
   cache = require('gulp-cache'),
   useref = require('gulp-useref'),
   uglify = require('gulp-uglify'),
-  gulpIf = require('gulp-if');
+  gulpIf = require('gulp-if'),
+  del = require('del');
 
 //paths
 var paths = {
@@ -57,10 +58,20 @@ gulp.task('sass', function() {
 
 gulp.task('useref', function() {
   return gulp.src('./src/index.html')
+    .pipe(plumber({
+      errorHandler: function(err) {
+        console.log(err.message);
+        this.emit('end');
+      }
+    }))
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
     .pipe(gulp.dest('./dist/html/'))
 });
+
+gulp.task('clean:dist', function() {
+  return del.sync('./dist/');
+})
 
 gulp.task('js', function() {
   return gulp.src(paths.js.src)
@@ -94,8 +105,8 @@ gulp.task('sass:watch', ['sass'], function() {
   gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
 });
 
-gulp.task('browser:watch', ['browserSync', 'sass','useref', 'images'], function() {
-  gulp.watch(['src/scss/*.scss', 'src/scss/**/*.scss'], ['sass']);
+gulp.task('browser:watch', ['browserSync', 'sass','clean:dist','useref', 'images'], function() {
+  gulp.watch(['src/scss/**/*.scss'], ['sass']);
   gulp.watch('src/*.html', ['useref']).on('change', browserSync.reload);
   gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
   gulp.watch('src/js/*.js', ['useref']).on('change', browserSync.reload);
