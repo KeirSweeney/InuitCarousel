@@ -26,6 +26,7 @@
       console.log("Number of images " + this.imageCount);
       this.buttonRight = $(".buttonRight");
       this.buttonLeft = $(".buttonLeft");
+      this.slideWidth = $("#slides").width();
 
       this.createDots();
       this.initSlideIndex();
@@ -39,7 +40,13 @@
 
         if (nextIndex < this.getSlides().length) {
           this.setActiveSlide(currentIndex, nextIndex);
+
+          $('#slides').animate({
+            marginLeft: '-=' + this.slideWidth
+          }, 1000);
         }
+
+
         //TODO disable the button when you can no longer go right
       }, this));
 
@@ -51,6 +58,10 @@
 
         if (nextIndex >= 0) {
           this.setActiveSlide(currentIndex, nextIndex);
+
+          $('#slides').animate({
+            marginLeft: '+=' + this.slideWidth
+          }, 1000);
         }
       }, this));
     },
