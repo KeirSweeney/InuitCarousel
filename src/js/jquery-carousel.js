@@ -28,18 +28,19 @@
       this.buttonLeft = $(".buttonLeft");
 
       this.createDots();
-      this.setActiveDot();
+      this.initSlideIndex();
 
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
         e.preventDefault();
         console.log("button right pressed");
-        this.setActiveDot(this.setActiveDot(1));
+        this.setActiveSlide(this.curentSlideIndex++);
+        this.setActiveDot();
       }, this));
 
       this.buttonLeft.click($.proxy(function(e) {
         e.preventDefault();
-        // this.setActiveDot(this.currentDotIndex--);
+        // this.setActiveDot(this.curentSlideIndex--);
       }, this));
       //TODO rewrite this to change a method that is a set and get of the global slide index. Hence using the same index for both the dots and the slides
     },
@@ -60,39 +61,50 @@
       return $("#slides li");
     },
 
-    setActiveDot: function(dotIndex) {
-      var dots = this.getDots();
-      if (dots.length <= 0) {
+    initSlideIndex: function() {
+      var slides = this.getSlides();
+
+      if (slides.length <= 0) {
         return;
       }
 
-      if (dotIndex === undefined) {
-        var slides = this.getSlides();
-        for (var i = 0; i < slides.length; i++) {
-          if (slides[i].id === "current") {
-            this.setSlideIndex(i);
-            dots[i].id = "active";
-          }
-        }
-
-      } else {
-        if ((dotIndex - 1) < 0) {
-          slides[0].id = "current";
+      for (var i = 0; i < slides.length; i++) {
+        if (slides[i].id === "current") {
+          this.curentSlideIndex = i;
           this.setActiveDot();
-        } else {
-          slides[dotIndex - 1].id = "";
-          slides[dotIndex].id = "current";
+          // dots[i].id = "active";
         }
       }
     },
 
-    setSlideIndex: function(index) {
-      this.currentDotIndex = index;
+    setActiveSlide: function(setSlideIndex) {
+      var slides = this.getSlides();
+      this.curentSlideIndex = setSlideIndex;
+      // slides[setSlideIndex - 1].id = "";
+      slides[setSlideIndex].id = "current";
+      // } else {
+      //   if ((dotIndex - 1) < 0) {
+      //     slides[1].id = "current";
+      //     this.setActiveDot();
+      //   } else {
+      //     slides[dotIndex - 1].id = "";
+      //     slides[dotIndex].id = "current";
+      //   }
+
     },
 
-    getSlideIndex: function() {
-      return this.currentDotIndex;
+    setActiveDot: function() {
+      var dots = this.getDots();
+      dots[this.curentSlideIndex].id = "active";
     },
+
+    // setSlideIndex: function(index) {
+    //   this.curentSlideIndex = index;
+    // },
+
+    // getSlideIndex: function() {
+    //   return this.curentSlideIndex;
+    // },
 
 
 
