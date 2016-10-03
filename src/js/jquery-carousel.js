@@ -33,9 +33,10 @@
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
         e.preventDefault();
-        console.log("button right pressed");
-        this.setActiveSlide(this.curentSlideIndex++);
-        this.setActiveDot();
+        var currentIndex = this.getCurrentSlideIndex();
+        var nextIndex = this.getCurrentSlideIndex() + 1;
+        this.setActiveSlide(currentIndex,nextIndex);
+        // this.setActiveDot();
       }, this));
 
       this.buttonLeft.click($.proxy(function(e) {
@@ -71,31 +72,35 @@
       for (var i = 0; i < slides.length; i++) {
         if (slides[i].id === "current") {
           this.curentSlideIndex = i;
-          this.setActiveDot();
-          // dots[i].id = "active";
-        }
+          this.setActiveDot(i);
+        } //TODO add default starting slide if user doesn't enter one
       }
     },
 
-    setActiveSlide: function(setSlideIndex) {
+    setActiveSlide: function(currentIndex, nextIndex) {
       var slides = this.getSlides();
-      this.curentSlideIndex = setSlideIndex;
-      // slides[setSlideIndex - 1].id = "";
-      slides[setSlideIndex].id = "current";
-      // } else {
-      //   if ((dotIndex - 1) < 0) {
-      //     slides[1].id = "current";
-      //     this.setActiveDot();
-      //   } else {
-      //     slides[dotIndex - 1].id = "";
-      //     slides[dotIndex].id = "current";
-      //   }
 
+      slides[currentIndex].id = "";
+      this.disablePrevDot(currentIndex);
+
+      this.curentSlideIndex = nextIndex;
+
+      slides[nextIndex].id = "current";
+      this.setActiveDot(nextIndex);
     },
 
-    setActiveDot: function() {
+    getCurrentSlideIndex : function() {
+      return this.curentSlideIndex;
+    },
+
+    setActiveDot: function(nextIndex) {
       var dots = this.getDots();
-      dots[this.curentSlideIndex].id = "active";
+      dots[nextIndex].id = "active";
+    },
+
+    disablePrevDot: function(prevDot) {
+      var dots = this.getDots();
+      dots[prevDot].id = "";
     },
 
     // setSlideIndex: function(index) {

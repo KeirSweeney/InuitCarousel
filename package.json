@@ -20,6 +20,7 @@
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^2.0.0",
     "gulp-useref": "^3.1.2",
+    "gulp-util": "^3.0.7",
     "gulp-watch": "^4.3.9",
     "inuitcss": "^6.0.0-beta.3"
   }

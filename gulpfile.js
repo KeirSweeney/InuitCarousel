@@ -12,7 +12,8 @@ var gulp = require("gulp"),
   useref = require('gulp-useref'),
   uglify = require('gulp-uglify'),
   gulpIf = require('gulp-if'),
-  del = require('del');
+  del = require('del'),
+  gutil = require('gulp-util');
 
 //paths
 var paths = {
@@ -58,14 +59,8 @@ gulp.task('sass', function() {
 
 gulp.task('useref', function() {
   return gulp.src('./src/index.html')
-    .pipe(plumber({
-      errorHandler: function(err) {
-        console.log(err.message);
-        this.emit('end');
-      }
-    }))
     .pipe(useref())
-    .pipe(gulpIf('*.js', uglify()))
+    .pipe(gulpIf('*.js', (uglify().on('error', gutil.log))))
     .pipe(gulp.dest('./dist/html/'))
 });
 
