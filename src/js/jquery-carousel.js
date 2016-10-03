@@ -33,18 +33,26 @@
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
         e.preventDefault();
+
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() + 1;
-        this.setActiveSlide(currentIndex,nextIndex);
+
+        if (nextIndex < this.getSlides().length) {
+          this.setActiveSlide(currentIndex, nextIndex);
+        }
+        //TODO disable the button when you can no longer go right
       }, this));
 
       this.buttonLeft.click($.proxy(function(e) {
         e.preventDefault();
+
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() - 1;
-        this.setActiveSlide(currentIndex,nextIndex);
+
+        if (nextIndex >= 0) {
+          this.setActiveSlide(currentIndex, nextIndex);
+        }
       }, this));
-      //TODO rewrite this to change a method that is a set and get of the global slide index. Hence using the same index for both the dots and the slides
     },
 
     createDots: function() {
@@ -90,7 +98,7 @@
       this.enableNextDot(nextIndex);
     },
 
-    getCurrentSlideIndex : function() {
+    getCurrentSlideIndex: function() {
       return this.curentSlideIndex;
     },
 
