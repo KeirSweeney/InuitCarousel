@@ -35,18 +35,13 @@
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
         e.preventDefault();
-
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() + 1;
-
         if (nextIndex < this.getSlides().length) {
-
           this.setActiveSlide(currentIndex, nextIndex);
-
           if (this.getAnimationType() == "slide") {
             this.slideRight(); //append the class into the html for sliding and crossfading
           }
-
           if (this.getAnimationType() == "crossfade") {
             var slides = this.getSlides();
 
@@ -59,10 +54,8 @@
 
       this.buttonLeft.click($.proxy(function(e) {
         e.preventDefault();
-
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() - 1;
-
         if (nextIndex >= 0) {
           this.setActiveSlide(currentIndex, nextIndex);
           if (this.getAnimationType() == "slide") {
@@ -83,7 +76,14 @@
     },
 
     prepareSlidesForAnim: function(animationType) {
+      //append the animation class too the HTML
+      if (animationType == defaults.animationType) {
+        console.log(animationType);
+        $("ol#slides").addClass("horizontal");
+      }
       if (animationType == "crossfade") {
+        $("ol#slides").addClass("layered");
+
         var slides = this.getSlides();
         for (var i = 0; i < slides.length; i++) {
           if (slides[i].id != "current") {
