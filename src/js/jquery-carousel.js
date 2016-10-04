@@ -1,10 +1,12 @@
-;(function($, window, undefined) {
+;
+(function($, window, undefined) {
 
   "use strict";
 
   var pluginName = "CarouselController",
     defaults = {
       dotsVisible: true,
+      animationType: "slide",
     };
 
   function Plugin(element, options) {
@@ -28,6 +30,7 @@
 
       this.createDots();
       this.initSlideIndex();
+      this.prepareSlidesForAnim(this.getAnimationType());
 
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
@@ -37,14 +40,20 @@
         var nextIndex = this.getCurrentSlideIndex() + 1;
 
         if (nextIndex < this.getSlides().length) {
+
           this.setActiveSlide(currentIndex, nextIndex);
 
-          $('#slides').animate({
-            marginLeft: '-=' + this.getSlideWidth()
-          }, 1000);
+          if (this.getAnimationType() == "slide") {
+            this.slideRight(); //append the class into the html for sliding and crossfading
+          }
+
+          if (this.getAnimationType() == "crossfade") {
+            var slides = this.getSlides();
+
+            this.fadeOut(slides[currentIndex]);
+            this.fadeIn(slides[nextIndex]);
+          }
         }
-
-
         //TODO disable the button when you can no longer go right
       }, this));
 
@@ -56,12 +65,56 @@
 
         if (nextIndex >= 0) {
           this.setActiveSlide(currentIndex, nextIndex);
-
-          $('#slides').animate({
-            marginLeft: '+=' + this.getSlideWidth()
-          }, 1000);
+          if (this.getAnimationType() == "slide") {
+            this.slideLeft(); //append the class into the html for sliding and crossfading
+          }
+          if (this.getAnimationType() == "crossfade") {
+            var slides = $('#slides li');
+            this.fadeOut(slides[currentIndex]);
+            this.fadeOut(slides[currentIndex]);
+            this.fadeIn(slides[nextIndex]);
+          }
         }
       }, this));
+    },
+
+    getAnimationType: function() {
+      return this.options.animationType;
+    },
+
+    prepareSlidesForAnim: function(animationType) {
+      if (animationType == "crossfade") {
+        var slides = this.getSlides();
+        for (var i = 0; i < slides.length; i++) {
+          if (slides[i].id != "current") {
+            $(slides[i]).css("opacity", "0");
+          }
+        }
+      }
+    },
+
+    slideRight: function() {
+      $('#slides').animate({
+        marginLeft: '-=' + this.getSlideWidth()
+      }, 1000);
+    },
+
+    slideLeft: function() {
+      $('#slides').animate({
+        marginLeft: '+=' + this.getSlideWidth()
+      }, 1000);
+    },
+
+    fadeOut: function(prevSlide) {
+      $(prevSlide).animate({
+        opacity: 0,
+      }, 1000);
+    },
+
+    fadeIn: function(nextSlide) {
+      $(nextSlide).animate({
+        opacity: 1,
+      }, 1000);
     },
 
     getSlideWidth: function() {
@@ -142,5 +195,7 @@
 
 
 $(document).ready(function() {
-  $(".carousel-outer").CarouselController();
+  $(".carousel-outer").CarouselController({
+    animationType: "crossfade",
+  });
 });
