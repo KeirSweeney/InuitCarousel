@@ -82,11 +82,7 @@
 
 
       }, this));
-
-
     },
-
-
 
     getAnimationType: function() {
       return this.options.animationType;
