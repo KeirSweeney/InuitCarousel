@@ -7,6 +7,7 @@
     defaults = {
       dotsVisible: true,
       animationType: "slide",
+      animationSpeed: 1000,
     };
 
   function Plugin(element, options) {
@@ -20,7 +21,6 @@
 
   Plugin.prototype = {
     init: function() {
-      // if(jQuery == undefined)
       //add initialisation here
       this.imageCount = $("#slides img").length;
       // this.slideObjects = this.getSlides();
@@ -62,14 +62,31 @@
             this.slideLeft(); //append the class into the html for sliding and crossfading
           }
           if (this.getAnimationType() == "crossfade") {
-            var slides = $('#slides li');
-            this.fadeOut(slides[currentIndex]);
+            var slides = this.getSlides();
             this.fadeOut(slides[currentIndex]);
             this.fadeIn(slides[nextIndex]);
           }
         }
       }, this));
+
+      this.getDots().click($.proxy(function(e) {
+        console.log($(e.target).index());
+        var currentIndex = this.getCurrentSlideIndex();
+        var nextIndex = $(e.target).index();
+        this.setActiveSlide(currentIndex, nextIndex);
+        if (this.getAnimationType() == "crossfade") {
+          var slides = this.getSlides();
+          this.fadeOut(slides[currentIndex]);
+          this.fadeIn(slides[nextIndex]);
+        }
+
+
+      }, this));
+
+
     },
+
+
 
     getAnimationType: function() {
       return this.options.animationType;
@@ -96,25 +113,25 @@
     slideRight: function() {
       $('#slides').animate({
         marginLeft: '-=' + this.getSlideWidth()
-      }, 1000);
+      }, this.options.animationSpeed);
     },
 
     slideLeft: function() {
       $('#slides').animate({
         marginLeft: '+=' + this.getSlideWidth()
-      }, 1000);
+      }, this.options.animationSpeed);
     },
 
     fadeOut: function(prevSlide) {
       $(prevSlide).animate({
         opacity: 0,
-      }, 1000);
+      }, this.options.animationSpeed);
     },
 
     fadeIn: function(nextSlide) {
       $(nextSlide).animate({
         opacity: 1,
-      }, 1000);
+      }, this.options.animationSpeed);
     },
 
     getSlideWidth: function() {
@@ -188,7 +205,6 @@
           new Plugin(this, options));
       }
     });
-
   };
 
 })(jQuery, window);
