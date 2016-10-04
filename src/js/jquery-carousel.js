@@ -1,5 +1,4 @@
-;
-(function($, window, undefined) {
+;(function($, window, undefined) {
 
   "use strict";
 
@@ -26,7 +25,6 @@
       console.log("Number of images " + this.imageCount);
       this.buttonRight = $(".buttonRight");
       this.buttonLeft = $(".buttonLeft");
-      this.slideWidth = $("#slides").width();
 
       this.createDots();
       this.initSlideIndex();
@@ -42,7 +40,7 @@
           this.setActiveSlide(currentIndex, nextIndex);
 
           $('#slides').animate({
-            marginLeft: '-=' + this.slideWidth
+            marginLeft: '-=' + this.getSlideWidth()
           }, 1000);
         }
 
@@ -60,10 +58,15 @@
           this.setActiveSlide(currentIndex, nextIndex);
 
           $('#slides').animate({
-            marginLeft: '+=' + this.slideWidth
+            marginLeft: '+=' + this.getSlideWidth()
           }, 1000);
         }
       }, this));
+    },
+
+    getSlideWidth: function() {
+      return $("#slides").width(); //in a function as the viewport can change width depending on if the page has been scaled
+      //TODO re-write as scrolling and then chanigng the size of the page causes a bug
     },
 
     createDots: function() {
