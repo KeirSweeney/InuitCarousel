@@ -67,6 +67,23 @@
   position: absolute;
 }
 
+.vertical {
+
+}
+
+.horizontal {
+  white-space: nowrap;
+  padding: 0;
+}
+.horizontal li {
+  display: inline;
+  vertical-align: middle;
+}
+
+.content li img {
+  width: 100%;
+}
+
 .title {
   position: absolute;
   font-size: 2vw;
@@ -76,17 +93,10 @@
   top: 1%;
   margin-left: 0;
   margin-right: 0;
+  margin: 0;
 }
 
-.content li {
-  left: 0;
-  padding: 0;
-  z-index: 0;
-}
 
-.content li img {
-  width: 100%;
-}
 
 .four-three {
    @include aspect-ratio(4, 3);

@@ -1,5 +1,4 @@
-;
-(function($, window, undefined) {
+;(function($, window, undefined) {
 
   "use strict";
 
@@ -39,7 +38,13 @@
 
         if (nextIndex < this.getSlides().length) {
           this.setActiveSlide(currentIndex, nextIndex);
+
+          $('#slides').animate({
+            marginLeft: '-=' + this.getSlideWidth()
+          }, 1000);
         }
+
+
         //TODO disable the button when you can no longer go right
       }, this));
 
@@ -51,8 +56,17 @@
 
         if (nextIndex >= 0) {
           this.setActiveSlide(currentIndex, nextIndex);
+
+          $('#slides').animate({
+            marginLeft: '+=' + this.getSlideWidth()
+          }, 1000);
         }
       }, this));
+    },
+
+    getSlideWidth: function() {
+      return $("#slides").width(); //in a function as the viewport can change width depending on if the page has been scaled
+      //TODO re-write as scrolling and then chanigng the size of the page causes a bug
     },
 
     createDots: function() {
