@@ -34,20 +34,15 @@
 
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
+
         e.preventDefault();
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() + 1;
+
         if (nextIndex < this.getSlides().length) {
           this.setActiveSlide(currentIndex, nextIndex);
-          if (this.getAnimationType() == "slide") {
-            this.slideRight(); //append the class into the html for sliding and crossfading
-          }
-          if (this.getAnimationType() == "crossfade") {
-            var slides = this.getSlides();
+          this.animateByType(this.getAnimationType(), currentIndex, nextIndex);
 
-            this.fadeOut(slides[currentIndex]);
-            this.fadeIn(slides[nextIndex]);
-          }
         }
         //TODO disable the button when you can no longer go right
       }, this));
@@ -57,20 +52,13 @@
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() - 1;
         if (nextIndex >= 0) {
+
           this.setActiveSlide(currentIndex, nextIndex);
-          if (this.getAnimationType() == "slide") {
-            this.slideLeft(); //append the class into the html for sliding and crossfading
-          }
-          if (this.getAnimationType() == "crossfade") {
-            var slides = this.getSlides();
-            this.fadeOut(slides[currentIndex]);
-            this.fadeIn(slides[nextIndex]);
-          }
+          this.animateByType(this.getAnimationType(), currentIndex, nextIndex);
         }
       }, this));
 
       this.getDots().click($.proxy(function(e) {
-        console.log($(e.target).index());
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = $(e.target).index();
         this.setActiveSlide(currentIndex, nextIndex);
@@ -79,6 +67,7 @@
           this.fadeOut(slides[currentIndex]);
           this.fadeIn(slides[nextIndex]);
         }
+        // TODO: complete animation for dot clicking for sliding
 
 
       }, this));
@@ -88,10 +77,25 @@
       return this.options.animationType;
     },
 
+    animateByType: function(animType, currentIndex, nextIndex) {
+      switch (animType) {
+        case "slide":
+          if (nextIndex > currentIndex) {
+            this.slideRight();
+          } else {
+            this.slideLeft();
+          }
+          break;
+        case "crossfade":
+          var slides = this.getSlides();
+          this.fadeOut(slides[currentIndex]);
+          this.fadeIn(slides[nextIndex]);
+          break;
+      }
+    },
+
     prepareSlidesForAnim: function(animationType) {
-      //append the animation class too the HTML
       if (animationType == defaults.animationType) {
-        console.log(animationType);
         $("ol#slides").addClass("horizontal");
       }
       if (animationType == "crossfade") {
@@ -106,7 +110,8 @@
       }
     },
 
-    slideRight: function() {
+    slideRight: function() { //TODO fix sliding distance and fix sliding after changing window size
+      //TODO: refactor into one slide function, and check the index <> to decide which way to
       $('#slides').animate({
         marginLeft: '-=' + this.getSlideWidth()
       }, this.options.animationSpeed);
@@ -153,7 +158,6 @@
 
     initSlideIndex: function() {
       var slides = this.getSlides();
-
       if (slides.length <= 0) {
         return;
       }
@@ -168,12 +172,9 @@
 
     setActiveSlide: function(currentIndex, nextIndex) {
       var slides = this.getSlides();
-
       slides[currentIndex].id = "";
       this.disablePrevDot(currentIndex);
-
       this.curentSlideIndex = nextIndex;
-
       slides[nextIndex].id = "current";
       this.enableNextDot(nextIndex);
     },
