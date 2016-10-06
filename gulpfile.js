@@ -59,8 +59,14 @@ gulp.task('sass', function() {
 
 gulp.task('useref', function() {
   return gulp.src('./src/index.html')
+    .pipe(plumber({
+      errorHandler: function(err) {
+        gutil.log(gutil.colors.red('Error (' + err.plugin + '): ' + '\n' + err.cause.message + '\nFilename: ' + err.cause.filename + '\nLine: ' + err.cause.line));
+      }
+    }))
     .pipe(useref())
-    .pipe(gulpIf('*.js', (uglify().on('error', gutil.log))))
+    .pipe(gulpIf('*.js', uglify()))
+    // .pipe(gulpIf('*.js', (uglify().on('error', gutil.log))))
     .pipe(gulp.dest('./dist/html/'))
 });
 
