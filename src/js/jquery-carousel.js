@@ -1,4 +1,5 @@
-;(function($, window, undefined) {
+;
+(function($, window, undefined) {
 
   "use strict";
 
@@ -67,8 +68,6 @@
           this.fadeIn(slides[nextIndex]);
         }
         // TODO: complete animation for dot clicking for sliding
-
-
       }, this));
     },
 
@@ -190,8 +189,7 @@
     disablePrevDot: function(prevDot) {
       var dots = this.getDots();
       dots[prevDot].id = "";
-    },
-
+    }
   };
 
   $.fn[pluginName] = function(options) {
@@ -202,7 +200,6 @@
       }
     });
   };
-
 })(jQuery, window);
 
 

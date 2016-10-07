@@ -13,7 +13,9 @@ var gulp = require("gulp"),
   uglify = require('gulp-uglify'),
   gulpIf = require('gulp-if'),
   del = require('del'),
-  gutil = require('gulp-util');
+  gutil = require('gulp-util'),
+  notify = require('gulp-notify'),
+  through = require('through');
 
 //paths
 var paths = {
@@ -33,13 +35,13 @@ var paths = {
     src: './src/js/*.js',
     dist: './dist/js/'
   }
-}
+};
 
 gulp.task('sass', function() {
   return gulp.src(paths.styles.src)
     .pipe(plumber({
       errorHandler: function(err) {
-        console.log(err.message);
+        gutil.log(err.message);
         this.emit('end');
       }
     }))
@@ -54,7 +56,7 @@ gulp.task('sass', function() {
     .pipe(gulp.dest(paths.styles.dist))
     .pipe(browserSync.reload({
       stream: true
-    }))
+    }));
 });
 
 gulp.task('useref', function() {
@@ -66,22 +68,23 @@ gulp.task('useref', function() {
     }))
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
+    .pipe(notify({message: 'Changes Detected, UseRef ran'}))
     // .pipe(gulpIf('*.js', (uglify().on('error', gutil.log))))
-    .pipe(gulp.dest('./dist/html/'))
+    .pipe(gulp.dest('./dist/html/'));
 });
 
 gulp.task('clean:dist', function() {
   return del.sync('./dist/');
-})
+});
 
 gulp.task('js', function() {
   return gulp.src(paths.js.src)
-    .pipe(gulp.dest(paths.js.dist))
+    .pipe(gulp.dest(paths.js.dist));
 }); /*JS pipe no longer needed but keeping temporarily*/
 
 gulp.task('html', function() {
   return gulp.src(paths.html.src)
-    .pipe(gulp.dest(paths.html.dist))
+    .pipe(gulp.dest(paths.html.dist));
 });/* HTML pipe will no longer be needed but keeping temporarily */
 
 gulp.task('images', function() {
@@ -90,7 +93,7 @@ gulp.task('images', function() {
       //Set interalaced to true for optimising GIFs
       interalaced: true,
     })))
-    .pipe(gulp.dest(paths.image.dist))
+    .pipe(gulp.dest(paths.image.dist));
 });
 
 gulp.task('browserSync', function() {
