@@ -12,7 +12,7 @@
   &:after  { content:''; display: table; clear: both;  }
 }
 
-@mixin carousel-btn($inner-position)
+@mixin carousel-btn($inner-position) /*TODO remove CSS from here into lower file*/
 {
   @if($inner-position == left) { left: 0; }
   @if($inner-position == right) { right: 0; }
