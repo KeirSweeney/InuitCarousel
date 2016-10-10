@@ -8,6 +8,8 @@
       dotsVisible: true,
       animationType: "slide",
       animationSpeed: 1000,
+      isAutoPlay: true,
+      autoPlaySpeed: 3000,
     };
 
   function Plugin(element, options) {
@@ -22,7 +24,7 @@
   Plugin.prototype = {
     init: function() {
       //add initialisation here
-      this.imageCount = $("#slides img").length;
+      this.imageCount = $("#slides img").length; // put into function
       // this.slideObjects = this.getSlides();
       console.log("Number of images " + this.imageCount);
       this.buttonRight = $(".buttonRight");
@@ -31,6 +33,9 @@
       this.createDots();
       this.initSlideIndex();
       this.prepareSlidesForAnim(this.getAnimationType());
+      if (this.options.isAutoPlay) {
+        this.autoPlay();
+      }
 
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
@@ -69,6 +74,23 @@
         }
         // TODO: complete animation for dot clicking for sliding
       }, this));
+    },
+
+    autoPlay: function() {
+      var self = this;
+
+      setInterval(function() {
+        var currentIndex = self.getCurrentSlideIndex();
+        var nextIndex = self.getCurrentSlideIndex() + 1;
+        if (nextIndex < self.getSlides().length) {
+          self.setActiveSlide(currentIndex, nextIndex);
+          self.animateByType(self.getAnimationType(), currentIndex, nextIndex);
+        } else {
+          self.setActiveSlide(currentIndex, 0);
+          self.animateByType(self.getAnimationType(), currentIndex, 0);
+          //goto begining
+        }
+      }, this.options.autoPlaySpeed);
     },
 
     getAnimationType: function() {
