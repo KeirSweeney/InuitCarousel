@@ -64,11 +64,11 @@ gulp.task('useref', function() {
     .pipe(plumber({
       errorHandler: function(err) {
         gutil.log(gutil.colors.red('Error (' + err.plugin + '): ' + '\n' + err.cause.message + '\nFilename: ' + err.cause.filename + '\nLine: ' + err.cause.line));
+        this.emit('end');
       }
     }))
     .pipe(useref())
     .pipe(gulpIf('*.js', uglify()))
-    .pipe(notify({message: 'Changes Detected, UseRef ran'}))
     // .pipe(gulpIf('*.js', (uglify().on('error', gutil.log))))
     .pipe(gulp.dest('./dist/html/'));
 });
