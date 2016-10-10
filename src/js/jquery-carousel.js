@@ -10,6 +10,7 @@
       animationSpeed: 1000,
       isAutoPlay: true,
       autoPlaySpeed: 3000,
+      loop: true,
     };
 
   function Plugin(element, options) {
@@ -33,7 +34,7 @@
       this.createDots();
       this.initSlideIndex();
       this.prepareSlidesForAnim(this.getAnimationType());
-      if (this.options.isAutoPlay) {
+      if (this.options.isAutoPlay && this.options.loop) {
         this.autoPlay();
       }
 
@@ -47,7 +48,9 @@
         if (nextIndex < this.getSlides().length) {
           this.setActiveSlide(currentIndex, nextIndex);
           this.animateByType(this.getAnimationType(), currentIndex, nextIndex);
-
+        } else if (this.options.loop) {
+          this.setActiveSlide(currentIndex, 0);
+          this.animateByType(this.getAnimationType(), currentIndex, 0);
         }
         //TODO disable the button when you can no longer go right
       }, this));
@@ -60,6 +63,11 @@
 
           this.setActiveSlide(currentIndex, nextIndex);
           this.animateByType(this.getAnimationType(), currentIndex, nextIndex);
+        } else if (this.options.loop) {
+          var lastIndex = this.getSlides().length-1;
+          console.log(lastIndex);
+          this.setActiveSlide(currentIndex, lastIndex);
+          this.animateByType(this.getAnimationType(), currentIndex, lastIndex);
         }
       }, this));
 
@@ -228,5 +236,7 @@
 $(document).ready(function() {
   $(".carousel-outer").CarouselController({
     animationType: "crossfade",
+    isAutoPlay: false,
+    loop: true,
   });
 });
