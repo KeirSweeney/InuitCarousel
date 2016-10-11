@@ -15,8 +15,8 @@ var gulp = require("gulp"),
   del = require('del'),
   gutil = require('gulp-util'),
   notify = require('gulp-notify'),
-  through = require('through');
-
+  through = require('through'),
+  rename = require('gulp-rename');
 //paths
 var paths = {
   styles: {
@@ -53,6 +53,7 @@ gulp.task('sass', function() {
     .pipe(cleanCSS({
       compatibility: 'ie8'
     }))
+    .pipe(rename('main.min.css'))
     .pipe(gulp.dest(paths.styles.dist))
     .pipe(browserSync.reload({
       stream: true
@@ -116,4 +117,4 @@ gulp.task('browser:watch', ['browserSync', 'clean:dist','sass','useref', 'images
   gulp.watch('src/js/*.js', ['useref']).on('change', browserSync.reload);
 });
 
-gulp.task('default', ['sass']);
+gulp.task('default', ['browser:watch']);
