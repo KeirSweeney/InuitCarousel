@@ -20,7 +20,7 @@
   position: absolute;
   transform: translateX(50%);
   z-index: 1;
-  }
+}
 
 .carousel-indicators li {
   position: relative;
@@ -30,8 +30,8 @@
   float: left;
   margin-right: 0.3vw;
   margin-left: auto;
-  background-color: black;
-  border-radius: 100%;
+  background-color: $default-button-colour;
+  border-radius: 50%;
   font-size: 3vw;
   opacity: 0.1;
   transition-duration: 1s;
@@ -42,16 +42,30 @@
   opacity: 1;
 }
 
-.carousel-outer button:hover {
-  opacity: 1;
+.carousel-outer .button:hover {
+  opacity: 0.75;
+}
+.button {
+  position: absolute;
+  background-color: $default-button-colour;
+  top: 50%;
+  font-size: 2vw;
+  height: auto;
+  padding: 2vw;
+  opacity: 0.1;
+  transition-duration: 1s;
+  border: 0;
+  border-radius: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  outline: none;
+}
+.button--left {
+  left: 0;
 }
 
-.buttonLeft {
-  @include carousel-btn(left);
-}
-
-.buttonRight {
-  @include carousel-btn(right);
+.button--right {
+  right: 0;
 }
 
 #active {
@@ -99,16 +113,24 @@
 
 .title {
   position: absolute;
+  color: white;
   font-size: 2vw;
   padding: 0;
   left: 0;
   right: 0;
-  top: 1%;
+
   margin-left: 0;
   margin-right: 0;
   margin: 0;
 }
 
+.title--top {
+  top: 1%;
+}
+
+.title--bottom {
+  bottom: 10%;
+}
 .four-three {
    @include aspect-ratio(4, 3);
 }
