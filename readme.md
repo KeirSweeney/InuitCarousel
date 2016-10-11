@@ -63,16 +63,16 @@ Add the plugin and css file into the relevant folders and add to HTML:
 ```
 
 ## Set up your HTML
-Add the following HTML code into the body of the HTML file you want the carousel to appear on. Comments have been added for understandings sake - you may remove them.
+Add the following HTML to your project where you would like the carousel to be.
 
 ### Currently tested and supported aspect ratios:
 * 3:2
 
 To resize the carousel depending on the aspect ratio of your images, you can use one of the following classes:
 ```html
-class="three-two"
-class="four-three"
-class="sixteen-nine"
+<div class="carousel-outer three-two">...</div>
+<div class="carousel-outer four-three">...</div>
+<div class="carousel-outer sixteen-nine">...</div>
 ```
 To implemment the carousel into your project please follow the HTML structure below.
 
@@ -111,7 +111,8 @@ The CTA button can be position at the top or bottom using the following classes:
 ```
 
 ## Use custom settings in the jQuery plugin
-Below are the default settings for the plugin. You can override these by passing in a JavaScript object into the plugin when you call it.
+
+Below are the default settings for the plugin.
 
 ```javascript
  defaults = {
@@ -124,7 +125,8 @@ Below are the default settings for the plugin. You can override these by passing
   indicatorColor: '#ffffff',
 };
 ```
-Here we create an example object variable *carouselSettings*. We then call the plugin on the div with the class "o-carousel".
+Here we query the HTML and add the CarouselController plugin to the ".carousel-outer" class.
+
 ```javascript
   $(".carousel-outer").CarouselController({
     animationType: "crossfade",
