@@ -28,7 +28,7 @@ var paths = {
     dist: './dist/'
   },
   image: {
-    src: './src/images/*.+(png|jpg|gif|svg)',
+    src: './src/images/**/*.+(png|jpg|gif|svg)',
     dist: './dist/images/'
   },
   js: {
@@ -112,7 +112,7 @@ gulp.task('sass:watch', ['sass'], function() {
 gulp.task('browser:watch', ['browserSync', 'clean:dist','sass','useref', 'images'], function() {
   gulp.watch(['src/scss/**/*.scss'], ['sass']);
   gulp.watch('src/*.html', ['useref']).on('change', browserSync.reload);
-  gulp.watch('src/images/*.+(png|jpg|gif|svg)', ['images']);
+  gulp.watch('src/images/**/*.+(png|jpg|gif|svg)', ['images']);
   gulp.watch('src/js/*.js', ['useref']).on('change', browserSync.reload);
 });
 
