@@ -11,24 +11,3 @@
   &:before { content:''; float: left; padding-bottom: $padding;  }
   &:after  { content:''; display: table; clear: both;  }
 }
-
-@mixin carousel-btn($inner-position) /*TODO remove CSS from here into lower file*/
-{
-  @if($inner-position == left) { left: 0; }
-  @if($inner-position == right) { right: 0; }
-  position: absolute;
-  font-size: 2vw;
-  height: 100%;
-  opacity: 0.1;
-  transition-duration: 1s;
-  border: 0;
-  z-index: 2;
-}
-
-@mixin image-alignment($axis)
-{
-  @if($axis == verticalAllign) {}
-  @if($axis == horizontalAllign) {}
-
-
-}
