@@ -13,6 +13,7 @@
 - [x] Fully functional prototype.
 
 View here:
+
 * [Carousel - 11/10/2016](https://keirsweeney.github.io/InuitCarousel/dist/html/)
 
 A project in which I have been asked to create a web Carousel from scratch.
