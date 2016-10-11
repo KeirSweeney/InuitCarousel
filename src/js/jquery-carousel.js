@@ -64,7 +64,7 @@
           this.setActiveSlide(currentIndex, nextIndex);
           this.animateByType(this.getAnimationType(), currentIndex, nextIndex);
         } else if (this.options.loop) {
-          var lastIndex = this.getSlides().length-1;
+          var lastIndex = this.getSlides().length - 1;
           console.log(lastIndex);
           this.setActiveSlide(currentIndex, lastIndex);
           this.animateByType(this.getAnimationType(), currentIndex, lastIndex);

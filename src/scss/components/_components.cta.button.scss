@@ -1,0 +1,20 @@
+.cta-button {
+  transition-duration: 1s;
+  display: block;
+  background-color: #3d9eff;
+  color: white;
+  opacity: 1;
+  position: absolute;
+  font-size: 2vw;
+  padding: 1vw;
+  border-radius: 5px;
+  top: 5%;
+  margin: auto;
+  text-align: center;
+  right:50%;
+  transform: translateX(50%);
+
+  &:hover {
+    background-color: #75bef9;
+  }
+}
