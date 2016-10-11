@@ -4,8 +4,9 @@
 
 # Next Tasks
 
-- [ ] set starting slide if undefined.
-- [ ] allow more customisation of the Carousel through jQuery options.
+- [ ] Finish JS usage in Readme
+- [ ] Set starting slide if undefined.
+- [ ] Allow more customisation of the Carousel through jQuery options.
 - [ ] Re-factor and optimise SASS.
 - [ ] Test other image aspect ratios.
 - [ ] Re-structure html for accesability ease.
@@ -109,39 +110,28 @@ The CTA button can be position at the top or bottom using the following classes:
   <h2 class="title title--bottom">Slide</h2>
 ```
 
-## Create Settings and Call Plugin
+## Use custom settings in the jQuery plugin
 Below are the default settings for the plugin. You can override these by passing in a JavaScript object into the plugin when you call it.
 
 ```javascript
-  defaults = {
-    loop: false,
-    theme: "dark",
-    showDots: false,
-    autoScroll: false,
-    transition: "basic",
-    scrollSpeed: 4000,
-    showIndicator: false,
-    transitionSpeed: 1000
-  };
+ defaults = {
+  dotsVisible: true,
+  animationType: "slide",
+  animationSpeed: 1000,
+  isAutoPlay: true,
+  autoPlaySpeed: 3000,
+  loop: true,
+  indicatorColor: '#ffffff',
+};
 ```
 Here we create an example object variable *carouselSettings*. We then call the plugin on the div with the class "o-carousel".
 ```javascript
-  var carouselSettings = {
-    showDots: true,
-    showIndicator: true,
-    transition: "slide",
+  $(".carousel-outer").CarouselController({
+    animationType: "crossfade",
+    isAutoPlay: false,
     loop: true,
-    autoScroll: false,
-    transitionSpeed: 1000
-
-  };
-  $(".o-carousel").merryGoSlide(carouselSettings);
+  });
 ```
-
-
-### Installing
-Navigate to a folder on your machine where you are happy to place the project folder.
-
 
 ### ITCSS
 
