@@ -11,6 +11,7 @@
       isAutoPlay: true,
       autoPlaySpeed: 3000,
       loop: true,
+      indicatorColor : white,
     };
 
   function Plugin(element, options) {
@@ -28,8 +29,8 @@
       this.imageCount = $("#slides img").length; // put into function
       // this.slideObjects = this.getSlides();
       console.log("Number of images " + this.imageCount);
-      this.buttonRight = $(".buttonRight");
-      this.buttonLeft = $(".buttonLeft");
+      this.buttonRight = $(".button--right");
+      this.buttonLeft = $(".button--left");
 
       this.createDots();
       this.initSlideIndex();
