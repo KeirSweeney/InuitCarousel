@@ -159,4 +159,6 @@ Naming of classes and JS
 
 ## License
 See the [license](LICENSE) file for details
+Icons courtesy of [Material Icons](https://design.google.com/icons/)
+Images courtesy of [pixabay](https://pixabay.com/)
 
