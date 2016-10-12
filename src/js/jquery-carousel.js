@@ -8,6 +8,10 @@
       dotsVisible: true,
       animationType: "slide",
       animationSpeed: 1000,
+      isAutoPlay: true,
+      autoPlaySpeed: 3000,
+      loop: true,
+      indicatorColor: '#ffffff',
     };
 
   function Plugin(element, options) {
@@ -22,32 +26,32 @@
   Plugin.prototype = {
     init: function() {
       //add initialisation here
-      this.imageCount = $("#slides img").length;
+      this.imageCount = $("#slides img").length; // put into function
       // this.slideObjects = this.getSlides();
       console.log("Number of images " + this.imageCount);
-      this.buttonRight = $(".buttonRight");
-      this.buttonLeft = $(".buttonLeft");
+      this.buttonRight = $(".button--right");
+      this.buttonLeft = $(".button--left");
 
       this.createDots();
       this.initSlideIndex();
       this.prepareSlidesForAnim(this.getAnimationType());
+      if (this.options.isAutoPlay && this.options.loop) {
+        this.autoPlay();
+      }
 
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
+
         e.preventDefault();
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() + 1;
+
         if (nextIndex < this.getSlides().length) {
           this.setActiveSlide(currentIndex, nextIndex);
-          if (this.getAnimationType() == "slide") {
-            this.slideRight(); //append the class into the html for sliding and crossfading
-          }
-          if (this.getAnimationType() == "crossfade") {
-            var slides = this.getSlides();
-
-            this.fadeOut(slides[currentIndex]);
-            this.fadeIn(slides[nextIndex]);
-          }
+          this.animateByType(this.getAnimationType(), currentIndex, nextIndex);
+        } else if (this.options.loop) {
+          this.setActiveSlide(currentIndex, 0);
+          this.animateByType(this.getAnimationType(), currentIndex, 0);
         }
         //TODO disable the button when you can no longer go right
       }, this));
@@ -57,20 +61,18 @@
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = this.getCurrentSlideIndex() - 1;
         if (nextIndex >= 0) {
+
           this.setActiveSlide(currentIndex, nextIndex);
-          if (this.getAnimationType() == "slide") {
-            this.slideLeft(); //append the class into the html for sliding and crossfading
-          }
-          if (this.getAnimationType() == "crossfade") {
-            var slides = this.getSlides();
-            this.fadeOut(slides[currentIndex]);
-            this.fadeIn(slides[nextIndex]);
-          }
+          this.animateByType(this.getAnimationType(), currentIndex, nextIndex);
+        } else if (this.options.loop) {
+          var lastIndex = this.getSlides().length - 1;
+          console.log(lastIndex);
+          this.setActiveSlide(currentIndex, lastIndex);
+          this.animateByType(this.getAnimationType(), currentIndex, lastIndex);
         }
       }, this));
 
       this.getDots().click($.proxy(function(e) {
-        console.log($(e.target).index());
         var currentIndex = this.getCurrentSlideIndex();
         var nextIndex = $(e.target).index();
         this.setActiveSlide(currentIndex, nextIndex);
@@ -79,19 +81,50 @@
           this.fadeOut(slides[currentIndex]);
           this.fadeIn(slides[nextIndex]);
         }
-
-
+        // TODO: complete animation for dot clicking for sliding
       }, this));
+    },
+
+    autoPlay: function() {
+      var self = this;
+
+      setInterval(function() {
+        var currentIndex = self.getCurrentSlideIndex();
+        var nextIndex = self.getCurrentSlideIndex() + 1;
+        if (nextIndex < self.getSlides().length) {
+          self.setActiveSlide(currentIndex, nextIndex);
+          self.animateByType(self.getAnimationType(), currentIndex, nextIndex);
+        } else {
+          self.setActiveSlide(currentIndex, 0);
+          self.animateByType(self.getAnimationType(), currentIndex, 0);
+          //goto begining
+        }
+      }, this.options.autoPlaySpeed);
     },
 
     getAnimationType: function() {
       return this.options.animationType;
     },
 
+    animateByType: function(animType, currentIndex, nextIndex) {
+      switch (animType) {
+        case "slide":
+          if (nextIndex > currentIndex) {
+            this.slideRight();
+          } else {
+            this.slideLeft();
+          }
+          break;
+        case "crossfade":
+          var slides = this.getSlides();
+          this.fadeOut(slides[currentIndex]);
+          this.fadeIn(slides[nextIndex]);
+          break;
+      }
+    },
+
     prepareSlidesForAnim: function(animationType) {
-      //append the animation class too the HTML
       if (animationType == defaults.animationType) {
-        console.log(animationType);
         $("ol#slides").addClass("horizontal");
       }
       if (animationType == "crossfade") {
@@ -106,7 +139,8 @@
       }
     },
 
-    slideRight: function() {
+    slideRight: function() { //TODO fix sliding distance and fix sliding after changing window size
+      //TODO: refactor into one slide function, and check the index <> to decide which way to
       $('#slides').animate({
         marginLeft: '-=' + this.getSlideWidth()
       }, this.options.animationSpeed);
@@ -153,7 +187,6 @@
 
     initSlideIndex: function() {
       var slides = this.getSlides();
-
       if (slides.length <= 0) {
         return;
       }
@@ -168,12 +201,9 @@
 
     setActiveSlide: function(currentIndex, nextIndex) {
       var slides = this.getSlides();
-
       slides[currentIndex].id = "";
       this.disablePrevDot(currentIndex);
-
       this.curentSlideIndex = nextIndex;
-
       slides[nextIndex].id = "current";
       this.enableNextDot(nextIndex);
     },
@@ -190,8 +220,7 @@
     disablePrevDot: function(prevDot) {
       var dots = this.getDots();
       dots[prevDot].id = "";
-    },
-
+    }
   };
 
   $.fn[pluginName] = function(options) {
@@ -202,12 +231,13 @@
       }
     });
   };
-
 })(jQuery, window);
 
 
-$(document).ready(function() {
+$(window).on("load", function() {
   $(".carousel-outer").CarouselController({
     animationType: "crossfade",
+    isAutoPlay: false,
+    loop: true,
   });
 });
