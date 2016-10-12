@@ -6,6 +6,16 @@
     <!--build:js ../js/main.min.js -->
     <script src="./js/jquery-carousel.js"></script>
     <!-- endbuild -->
+    <script>$(window).on("load", function() {
+      $(".carousel-outer").CarouselController({
+      animationType: "crossfade",
+      isAutoPlay: true,
+      loop: true,
+      });
+      $(".spinner").css("display", "none");
+      $(".carousel-outer").fadeIn(2000);
+    });
+    </script>
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-store" />
     <meta http-equiv="Pragma" content="no-cache" />
@@ -14,6 +24,13 @@
     <link rel="stylesheet" href="../css/main.min.css" type="text/css">
   </head>
   <body>
+    <div class="spinner">
+      <div class="rect1"></div>
+      <div class="rect2"></div>
+      <div class="rect3"></div>
+      <div class="rect4"></div>
+      <div class="rect5"></div>
+    </div>
     <div class="carousel-outer three-two">
       <button class="button button--right" type="button"><img src="../images/icons/icon-arrow-right.svg"></button>
       <button class="button button--left" type="button"><img src="../images/icons/icon-arrow-left.svg"></button>
