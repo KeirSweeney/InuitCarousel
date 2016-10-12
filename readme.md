@@ -4,7 +4,7 @@
 
 # Next Tasks
 
-- [ ] Fix git history to include my email for contributions.
+- [x] Fix git history to include my email for contributions.
 - [ ] Finish JS usage in Readme
 - [ ] Set starting slide if undefined.
 - [ ] Allow more customisation of the Carousel through jQuery options.
@@ -106,10 +106,16 @@ To implemment the carousel into your project please follow the HTML structure be
 ```
 ## Styling options
 
-The CTA button can be position at the top or bottom using the following classes:
+The Title can be positioned at the top or bottom using the following classes:
 ```html
-  <h2 class="title title--top">Slide</h2>
-  <h2 class="title title--bottom">Slide</h2>
+  <h2 class="title title--top">...</h2>
+  <h2 class="title title--bottom">...</h2>
+```
+
+The CTA can be positioned at the top or bottom using the following classes:
+```html
+  <button class="cta cta--top">...</button>
+  <button class="cta cta--bottom">Slide</button>
 ```
 
 ## Use custom settings in the jQuery plugin
@@ -129,12 +135,17 @@ Below are the default settings for the plugin.
 ```
 Here we query the HTML and add the CarouselController plugin to the ".carousel-outer" class.
 
-```javascript
-  $(".carousel-outer").CarouselController({
-    animationType: "crossfade",
-    isAutoPlay: false,
-    loop: true,
+```html
+  <script>$(window).on("load", function() {
+    $(".carousel-outer").CarouselController({
+      animationType: "crossfade",
+      isAutoPlay: true,
+      loop: true,
+    });
+    $(".spinner").css("display", "none");
+    $(".carousel-outer").fadeIn(2000);
   });
+  </script>
 ```
 
 ### ITCSS
