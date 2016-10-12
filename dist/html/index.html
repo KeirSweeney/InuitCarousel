@@ -9,27 +9,28 @@
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="expires" content="Fri, 18 Jul 2014 1:00:00 GMT" />
     <title>Inuit Carousel</title>
-    <link rel="stylesheet" href="../css/main.css" type="text/css">
+    <link rel="stylesheet" href="../css/main.min.css" type="text/css">
   </head>
   <body>
     <div class="carousel-outer three-two">
-        <button class="buttonRight" type="button">Next</button>
-        <button class="buttonLeft" type="button">Back</button>
-        <ul class="carousel-indicators">
-        </ul>
-        <ol class="content" id="slides">
-          <!-- <div class="title">Slide 1</div> -->
-          <li id="current">
-            <h2 class="title">Slide</h2>
-            <img src="../images/32.png" alt="Image1">
-          </li>
-          <li>
-            <h2 class="title">Slide</h2>
-            <img src="../images/3by2.jpg" alt="Image2">
-          </li>
-          <li>
-            <img src="../images/3by22.png" alt="Image3">
-          </li>
+      <button class="button button--right" type="button"><img src="../images/icons/icon-arrow-right.svg"></button>
+      <button class="button button--left" type="button"><img src="../images/icons/icon-arrow-left.svg"></button>
+      <ul class="carousel-indicators">
+      </ul>
+      <ol class="content" id="slides">
+        <!-- <div class="title">Slide 1</div> -->
+        <li id="current">
+          <h2 class="title title--top">Slide</h2>
+          <img src="../images/natural-sun.jpg" alt="Image1">
+        </li>
+        <li>
+          <h2 class="title title--bottom">Slide</h2>
+          <img src="../images/sun.jpg" alt="Image2">
+        </li>
+        <li>
+          <a href="https://www.google.com"><button class="cta cta--top">More Info</button></a>
+          <img src="../images/sunset.jpg" alt="Image3">
+        </li>
       </ol>
     </div>
   </body>
