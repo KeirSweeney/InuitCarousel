@@ -1,0 +1,29 @@
+.cta {
+  transition-duration: 1s;
+  display: block;
+  background-color: #3d9eff;
+  box-shadow: 0 7px 4px #777;
+  color: white;
+  opacity: 1;
+  position: absolute;
+  font-size: 2vw;
+  padding: 1vw;
+  border-radius: 5px;
+  margin: auto;
+  text-align: center;
+  right:50%;
+  transform: translateX(50%);
+
+  &:hover {
+    background-color: #0483ea;
+  }
+
+}
+
+.cta--top {
+    top: 5%;
+}
+
+.cta--bottom {
+  bottom: 12%;
+}
