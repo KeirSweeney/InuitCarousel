@@ -148,7 +148,7 @@ $(window).on("load", function() {
   $(".spinner").css("display", "none");
   $(".carousel-outer").fadeIn(2000);
   });
-  </script>
+</script>
 ```
 
 ### ITCSS
