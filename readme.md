@@ -162,6 +162,8 @@ Naming of classes and JS
 ## License
 See the [license](LICENSE) file for details.
 
+Loading CSS icon courtesy of [SpinKit](https://github.com/tobiasahlin/SpinKit).
+
 Icons courtesy of [Material Icons](https://design.google.com/icons/).
 
 Images courtesy of [pixabay](https://pixabay.com/).
