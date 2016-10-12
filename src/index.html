@@ -6,6 +6,14 @@
     <!--build:js ../js/main.min.js -->
     <script src="./js/jquery-carousel.js"></script>
     <!-- endbuild -->
+    <script>$(window).on("load", function() {
+      $(".carousel-outer").CarouselController({
+      animationType: "crossfade",
+      isAutoPlay: true,
+      loop: true,
+      });
+    });
+    alert("loaded");</script>
     <meta charset="UTF-8">
     <meta http-equiv="Cache-Control" content="no-store" />
     <meta http-equiv="Pragma" content="no-cache" />

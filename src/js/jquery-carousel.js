@@ -234,10 +234,4 @@
 })(jQuery, window);
 
 
-$(document).ready(function() {
-  $(".carousel-outer").CarouselController({
-    animationType: "crossfade",
-    isAutoPlay: false,
-    loop: true,
-  });
-});
+
