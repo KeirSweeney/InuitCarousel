@@ -232,12 +232,3 @@
     });
   };
 })(jQuery, window);
-
-
-$(window).on("load", function() {
-  $(".carousel-outer").CarouselController({
-    animationType: "crossfade",
-    isAutoPlay: true,
-    loop: true,
-  });
-});
