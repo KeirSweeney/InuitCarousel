@@ -7,9 +7,9 @@
     defaults = {
       dotsVisible: true,
       animationType: "slide",
-      animationSpeed: 1000,
+      animationSpeed: 1500,
       isAutoPlay: true,
-      autoPlaySpeed: 3000,
+      autoPlaySpeed: 3500,
       loop: true,
       indicatorColor: '#ffffff',
     };
@@ -27,7 +27,7 @@
     init: function() {
       //add initialisation here
       this.imageCount = $("#slides img").length; // put into function
-      // this.slideObjects = this.getSlides();
+
       console.log("Number of images " + this.imageCount);
       this.buttonRight = $(".button--right");
       this.buttonLeft = $(".button--left");
@@ -237,7 +237,7 @@
 $(document).ready(function() {
   $(".carousel-outer").CarouselController({
     animationType: "crossfade",
-    isAutoPlay: false,
+    isAutoPlay: true,
     loop: true,
   });
 });

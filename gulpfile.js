@@ -94,6 +94,7 @@ gulp.task('images', function() {
       //Set interalaced to true for optimising GIFs
       interalaced: true,
     })))
+    .pipe(imagemin())
     .pipe(gulp.dest(paths.image.dist));
 });
 
