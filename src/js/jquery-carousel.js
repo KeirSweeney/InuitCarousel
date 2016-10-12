@@ -234,7 +234,7 @@
 })(jQuery, window);
 
 
-$(document).ready(function() {
+$(window).on("load", function() {
   $(".carousel-outer").CarouselController({
     animationType: "crossfade",
     isAutoPlay: false,
