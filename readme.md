@@ -4,13 +4,14 @@
 
 # Next Tasks
 
-- [ ] Fix git history to include my email for contributions.
-- [ ] Finish JS usage in Readme
+- [ ] Optimise web images.
+- [ ] Finish JS usage in Readme.
 - [ ] Set starting slide if undefined.
 - [ ] Allow more customisation of the Carousel through jQuery options.
 - [ ] Re-factor and optimise SASS.
 - [ ] Test other image aspect ratios.
 - [ ] Re-structure html for accesability ease.
+- [x] Fix git history to include my email for contributions.
 - [x] Fully functional prototype.
 
 View here:
