@@ -11,7 +11,7 @@
       isAutoPlay: true,
       autoPlaySpeed: 3000,
       loop: true,
-      indicatorColor : white,
+      indicatorColor: '#ffffff',
     };
 
   function Plugin(element, options) {

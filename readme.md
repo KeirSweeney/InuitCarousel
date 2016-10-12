@@ -4,6 +4,7 @@
 
 # Next Tasks
 
+- [ ] Fix git history to include my email for contributions.
 - [ ] Finish JS usage in Readme
 - [ ] Set starting slide if undefined.
 - [ ] Allow more customisation of the Carousel through jQuery options.
