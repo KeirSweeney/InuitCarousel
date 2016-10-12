@@ -18,3 +18,7 @@ html {
   font-size: ($font-size-base / 16px) * 1em;
   line-height: $font-size-base/$line-height-base;
 }
+
+body {
+  display: none;
+}
