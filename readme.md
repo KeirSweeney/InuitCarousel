@@ -136,14 +136,17 @@ Below are the default settings for the plugin.
 Here we query the HTML and add the CarouselController plugin to the ".carousel-outer" class.
 
 ```html
-  <script>$(window).on("load", function() {
-    $(".carousel-outer").CarouselController({
-      animationType: "crossfade",
-      isAutoPlay: true,
-      loop: true,
-    });
-    $(".spinner").css("display", "none");
-    $(".carousel-outer").fadeIn(2000);
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> <!-- Or local path for jQuery -->
+<script src="./js/jquery-carousel.js"></script>
+<script>
+$(window).on("load", function() {
+  $(".carousel-outer").CarouselController({
+    animationType: "crossfade",
+    isAutoPlay: true,
+    loop: true,
+  });
+  $(".spinner").css("display", "none");
+  $(".carousel-outer").fadeIn(2000);
   });
   </script>
 ```
