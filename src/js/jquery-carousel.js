@@ -1,7 +1,6 @@
-;
-(function($, window, undefined) {
+;(function($, window, undefined) {
 
-  "use strict";
+  'use strict';
 
   var pluginName = "CarouselController",
     defaults = {
