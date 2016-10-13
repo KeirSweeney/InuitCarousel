@@ -9,7 +9,7 @@
   * [Load the plugin](#load-the-plugin-files-into-your-project)
   * [Set up your HTML](#set-up-your-html)
   * [Styling Options](#styling-options)
-* [jQuery custom settings](#styling-options)
+* [jQuery custom settings](#use-custom-settings-in-the-jquery-plugin)
 * [Author](#author)
 * [License](#license)
 
