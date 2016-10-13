@@ -5,7 +5,7 @@
 * [Next Tasks](#next-tasks)
 * [Prerequisities](#prerequisities)
 * [Installation](#installation)
-* [Using in your own project](#using-in-own-project)
+* [Usage](#usage)
   * [Load the plugin](#load-the-plugin-files-into-your-project)
   * [Set up your HTML](#set-up-your-html)
   * [Styling Options](#styling-options)
@@ -63,7 +63,7 @@ gulp
 ```
 If browser sync hasn't started automatically, [click here.](http://localhost:3000) to view the page on your local host.
 
-## Using in you own project
+## Usage
 
 To use the jQuery plugin you will need to add the following to your project. Please be careful with folder structure and file names.
 
