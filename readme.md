@@ -2,12 +2,12 @@
 
 # Contents
 
-* [Next Tasks](https://github.com/KeirSweeney/InuitCarousel/tree/develop#next-tasks)
+* [Next Tasks](#next-tasks)
 * [Prerequisities](https://github.com/KeirSweeney/InuitCarousel/tree/develop#prerequisities)
 * [Installation](https://github.com/KeirSweeney/InuitCarousel/tree/develop#installation)
 * [Using in your own project](https://github.com/KeirSweeney/InuitCarousel/tree/develop#using-in-own-project)
-** [Load the plugin](https://github.com/KeirSweeney/InuitCarousel/tree/develop#load-the-plugin-files-into-your-project)
-** [Set up your HTML](https://github.com/KeirSweeney/InuitCarousel/tree/develop#set-up-your-html)
+..* [Load the plugin](https://github.com/KeirSweeney/InuitCarousel/tree/develop#load-the-plugin-files-into-your-project)
+..* [Set up your HTML](https://github.com/KeirSweeney/InuitCarousel/tree/develop#set-up-your-html)
 ** [Styling Options](https://github.com/KeirSweeney/InuitCarousel/tree/develop#styling-options)
 * [jQuery custom settings](https://github.com/KeirSweeney/InuitCarousel/tree/develop#styling-options)
 * [Author](https://github.com/KeirSweeney/InuitCarousel/tree/develop#author)
