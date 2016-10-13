@@ -2,6 +2,18 @@
 
 # Contents
 
+* [Next Tasks](https://github.com/KeirSweeney/InuitCarousel/tree/develop#next-tasks)
+* [Prerequisities](https://github.com/KeirSweeney/InuitCarousel/tree/develop#prerequisities)
+* [Installation](https://github.com/KeirSweeney/InuitCarousel/tree/develop#installation)
+* [Using in your own project](https://github.com/KeirSweeney/InuitCarousel/tree/develop#using-in-own-project)
+** [Load the plugin](https://github.com/KeirSweeney/InuitCarousel/tree/develop#load-the-plugin-files-into-your-project)
+** [Set up your HTML](https://github.com/KeirSweeney/InuitCarousel/tree/develop#set-up-your-html)
+** [Styling Options](https://github.com/KeirSweeney/InuitCarousel/tree/develop#styling-options)
+* [jQuery custom settings](https://github.com/KeirSweeney/InuitCarousel/tree/develop#styling-options)
+* [Author](https://github.com/KeirSweeney/InuitCarousel/tree/develop#author)
+* [License](https://github.com/KeirSweeney/InuitCarousel/tree/develop#license)
+
+
 # Next Tasks
 
 - [x] Fix git history to include my email for contributions.
@@ -27,7 +39,7 @@ I will also be using [**Gulp**](http://gulpjs.com/) as the task runner.
 
 jQuery will be used to all JavaScript.
 
-### Prerequisities
+## Prerequisities
 You will need the following tools to run the project:
 * [Node.js and Npm](https://nodejs.org/en/download/)
 
@@ -51,7 +63,7 @@ gulp
 ```
 If browser sync hasn't started automatically, [click here.](http://localhost:3000) to view the page on your local host.
 
-## Usage in own project
+## Using in you own project
 
 To use the jQuery plugin you will need to add the following to your project. Please be careful with folder structure and file names.
 
@@ -64,7 +76,7 @@ Add the plugin and css file into the relevant folders and add to HTML:
 <script src="/js/main.min.js"></script>
 ```
 
-## Set up your HTML
+### Set up your HTML
 Add the following HTML to your project where you would like the carousel to be.
 
 ### Currently tested and supported aspect ratios:
@@ -104,7 +116,7 @@ To implemment the carousel into your project please follow the HTML structure be
     </ol>
 </div>
 ```
-## Styling options
+### Styling options
 
 The Title can be positioned at the top or bottom using the following classes:
 ```html
