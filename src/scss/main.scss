@@ -86,6 +86,8 @@
 Build and include your project’s UI Compoments here. */
 
 @import "../../node_modules/inuitcss/components/example.components.buttons";
+@import "./components/components.cta.button";
+@import "./components/components.loading.icon";
 
 /* UTILITIES */
 @import "../../node_modules/inuitcss/utilities/utilities.clearfix";
