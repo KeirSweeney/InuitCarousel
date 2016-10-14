@@ -156,9 +156,7 @@ $(window).on("load", function() {
     isAutoPlay: true,
     loop: true,
   });
-  $(".spinner").css("display", "none");
-  $(".carousel-outer").fadeIn(2000);
-  });
+});
 </script>
 ```
 
