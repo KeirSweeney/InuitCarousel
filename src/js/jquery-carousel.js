@@ -8,7 +8,7 @@
       animationType: "slide",
       animationSpeed: 1000,
       isAutoPlay: true,
-      autoPlaySpeed: 3000,
+      autoPlaySpeed: 3500,
       loop: true,
       indicatorColor: '#ffffff',
     };
