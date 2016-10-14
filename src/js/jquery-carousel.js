@@ -1,4 +1,5 @@
-;(function($, window, undefined) {
+;
+(function($, window, undefined) {
 
   'use strict';
 
@@ -185,6 +186,7 @@
     },
 
     initSlideIndex: function() {
+      var startSlideSet = false;
       var slides = this.getSlides();
       if (slides.length <= 0) {
         return;
@@ -192,10 +194,22 @@
 
       for (var i = 0; i < slides.length; i++) {
         if (slides[i].id === "current") {
+          startSlideSet = true;
           this.curentSlideIndex = i;
           this.enableNextDot(i);
-        } //TODO add default starting slide if user doesn't enter one
+        }
+        //TODO add default starting slide if user doesn't enter one
       }
+      if (!startSlideSet) {
+        this.setDefaultStartSlide(slides);
+      }
+    },
+
+    setDefaultStartSlide: function(slides) {
+      console.log("Setting default starting slide");
+      slides[0].id = "current";
+      this.curentSlideIndex = 0;
+      this.enableNextDot(0);
     },
 
     setActiveSlide: function(currentIndex, nextIndex) {
@@ -231,6 +245,3 @@
     });
   };
 })(jQuery, window);
-
-
-
