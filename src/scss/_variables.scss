@@ -1,8 +1,4 @@
 /*
-** - Layout
-*/
-$container: 1400px;
-/*
 ** - Fonts
 */
 $font-size-base: 16px;
@@ -13,8 +9,3 @@ $line-height-base: 24px;
 $white: #fff;
 $black: #000;
 $default-button-colour: #d1cccc;
-
-/*
-** - Default Sizes
-*/
-$default-module-padding:  calc(100% / 12); /*change dependant on the size of the default*/

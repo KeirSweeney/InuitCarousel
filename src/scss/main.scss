@@ -4,7 +4,6 @@
 @import 'variables';
 @import 'overwrites';
 
-
 /*
 ** - SETTINGS
 *
@@ -15,7 +14,6 @@
 @import "../../node_modules/inuitcss/settings/example.settings.global";
 
 @import './settings/settings.breakpoints';
-
 
 /*
 ** - TOOLS
@@ -31,7 +29,6 @@
 @import './tools/tools.functions';
 @import './tools/tools.mixins';
 
-
 /*
 ** - GENERIC
 */
@@ -41,7 +38,6 @@
 @import "../../node_modules/inuitcss/generic/generic.normalize";
 @import "../../node_modules/inuitcss/generic/generic.reset";
 @import "../../node_modules/inuitcss/generic/generic.shared";
-
 
 /* ELEMENTS */
 @import "../../node_modules/inuitcss/elements/elements.page";
@@ -55,7 +51,6 @@
 /* Unclassed HTML elements (e.g. a {}, blockquote {}, address {}).*/
 
 @import './base/base.elements';
-
 
 /*
 ** - OBJECTS
@@ -75,10 +70,6 @@
 @import "../../node_modules/inuitcss/objects/objects.tables";
 @import "../../node_modules/inuitcss/objects/objects.pack";
 
-@import "./objects/objects.carousel"; /*todo move to components*/
-
-
-
 /*
 ** - COMPONENTS
 */
@@ -86,16 +77,16 @@
 Build and include your project’s UI Compoments here. */
 
 @import "../../node_modules/inuitcss/components/example.components.buttons";
+@import "./components/components.carousel";
 @import "./components/components.cta.button";
+@import "./components/components.loading.icon";
 
 /* UTILITIES */
 @import "../../node_modules/inuitcss/utilities/utilities.clearfix";
-
 
 /*
 ** - TRUMPS
 */
 /* High-specificity, very explicit selectors. Overrides and helper classes (e.g. .hidden {}).*/
-
 
 @import './trumps/trumps.helpers';
