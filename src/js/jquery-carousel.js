@@ -11,7 +11,7 @@
       isAutoPlay: true,
       autoPlaySpeed: 3500,
       loop: true,
-      indicatorColor: '#ffffff',
+      indicatorColor: '#FFFFFF',
       startingSlide: 0,
     };
 
@@ -34,11 +34,13 @@
       this.buttonLeft = $(".button--left");
 
       this.createDots();
+      this.setDotsColor();
       this.initSlideIndex();
       this.prepareSlidesForAnim(this.getAnimationType());
       if (this.options.isAutoPlay && this.options.loop) {
         this.autoPlay();
       }
+
 
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
@@ -176,6 +178,10 @@
           $(".carousel-indicators").append("<li></li>");
         }
       }
+    },
+
+    setDotsColor: function() {
+      $(this.getDots()).css("background-color", this.options.indicatorColor);
     },
 
     getDots: function() {

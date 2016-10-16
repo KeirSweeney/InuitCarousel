@@ -18,7 +18,7 @@
 
 - [x] Fix git history to include my email for contributions.
 - [ ] Finish JS usage in Readme
-- [ ] Set starting slide if undefined.
+- [x] Set starting slide if undefined.
 - [ ] Allow more customisation of the Carousel through jQuery options.
 - [ ] Re-factor and optimise SASS.
 - [ ] Test other image aspect ratios.
@@ -141,7 +141,7 @@ Below are the default settings for the plugin.
   isAutoPlay: true,
   autoPlaySpeed: 3000,
   loop: true,
-  indicatorColor: '#ffffff',
+  indicatorColor: '#FFFFFF',
   startingSlide: 0,
 };
 ```
@@ -156,7 +156,7 @@ animationSpeed: 1000, // Any speed in milliseconds, time of the animation. e.g. 
 isAutoPlay: true, // or false
 autoPlaySpeed: 3000, // Any speed in milliseconds, time between each slide animation. e.g. how regular is fades.
 loop: true, // or false
-indicatorColor: '#ffffff', // using hex colours, change the coloud of the carousel indicators.
+indicatorColor: '#FFFFFF', // using hex colours, change the colour of the carousel indicators.
 startingSlide: 0, // change the starting slide, if you set the starting slide outside the range of your array I'll fix that for you ;)
 ```
 
