@@ -1,16 +1,18 @@
-;(function($, window, undefined) {
+;
+(function($, window, undefined) {
 
   'use strict';
 
   var pluginName = "CarouselController",
     defaults = {
-      dotsVisible: true,
-      animationType: "slide",
-      animationSpeed: 1500,
+      dotsVisible: true, // Hides or shows the carousel indicators
+      animationType: "slide", // the default animation type
+      animationSpeed: 1000,
       isAutoPlay: true,
       autoPlaySpeed: 3500,
       loop: true,
-      indicatorColor: '#ffffff',
+      indicatorColor: '#FFFFFF',
+      startingSlide: 0,
     };
 
   function Plugin(element, options) {
@@ -26,17 +28,19 @@
     init: function() {
       //add initialisation here
       this.imageCount = $("#slides img").length; // put into function
-
+      // this.slideObjects = this.getSlides();
       console.log("Number of images " + this.imageCount);
       this.buttonRight = $(".button--right");
       this.buttonLeft = $(".button--left");
 
       this.createDots();
+      this.setDotsColor();
       this.initSlideIndex();
       this.prepareSlidesForAnim(this.getAnimationType());
       if (this.options.isAutoPlay && this.options.loop) {
         this.autoPlay();
       }
+
 
       //proxy is required to return the event onto the 'this' object for the scope of the plugin.
       this.buttonRight.click($.proxy(function(e) {
@@ -176,6 +180,10 @@
       }
     },
 
+    setDotsColor: function() {
+      $(this.getDots()).css("background-color", this.options.indicatorColor);
+    },
+
     getDots: function() {
       return $(".carousel-indicators li");
     },
@@ -185,6 +193,7 @@
     },
 
     initSlideIndex: function() {
+      var startSlideSet = false;
       var slides = this.getSlides();
       if (slides.length <= 0) {
         return;
@@ -192,9 +201,33 @@
 
       for (var i = 0; i < slides.length; i++) {
         if (slides[i].id === "current") {
+          startSlideSet = true;
           this.curentSlideIndex = i;
           this.enableNextDot(i);
-        } //TODO add default starting slide if user doesn't enter one
+        }
+        //TODO add default starting slide if user doesn't enter one
+      }
+      if (!startSlideSet) {
+        this.setDefaultStartSlide(slides);
+      }
+    },
+
+    setDefaultStartSlide: function(slides) {
+      var startSlideIndex = this.options.startingSlide; //as it's not being set, it's getting set to 0 automatically, is this bad?
+      if (startSlideIndex < slides.length) {
+        console.log("Setting default starting slide");
+        slides[startSlideIndex].id = "current";
+        this.curentSlideIndex = startSlideIndex;
+        this.enableNextDot(startSlideIndex);
+      } else {
+        try {
+          throw new Error("Starting slide is out of index of the amount of slides.");
+        } catch (e) {
+          console.log(e.name + ': ' + e.message);
+          console.log("Setting starting slide to index: " + slides.length);
+          this.options.startingSlide = slides.length - 1;
+          this.setDefaultStartSlide(slides);
+        }
       }
     },
 

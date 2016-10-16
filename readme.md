@@ -3,6 +3,7 @@
 # Contents
 
 * [Next Tasks](#next-tasks)
+* [Introduction](#introduction)
 * [Prerequisities](#prerequisities)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -16,17 +17,16 @@
 
 # Next Tasks
 
-- [ ] Optimise web images.
-- [ ] Finish JS usage in Readme.
 - [x] Fix git history to include my email for contributions.
 - [ ] Finish JS usage in Readme
-- [ ] Set starting slide if undefined.
+- [x] Set starting slide if undefined.
 - [ ] Allow more customisation of the Carousel through jQuery options.
-- [ ] Re-factor and optimise SASS.
+- [x] Re-factor and optimise SASS.
 - [ ] Test other image aspect ratios.
-- [ ] Re-structure html for accesability ease.
-- [x] Fix git history to include my email for contributions.
+- [x] Re-structure html for accesability ease.
 - [x] Fully functional prototype.
+
+# Introduction
 
 View here:
 
@@ -144,10 +144,26 @@ Below are the default settings for the plugin.
   isAutoPlay: true,
   autoPlaySpeed: 3000,
   loop: true,
-  indicatorColor: '#ffffff',
+  indicatorColor: '#FFFFFF',
+  startingSlide: 0,
 };
 ```
 Here we query the HTML and add the CarouselController plugin to the ".carousel-outer" class.
+
+Different options are as follows:
+
+```javascript
+dotsVisible: true // or false,
+animationType: crossfade // or slide,
+animationSpeed: 1000, // Any speed in milliseconds, time of the animation. e.g. how fast it fades.
+isAutoPlay: true, // or false
+autoPlaySpeed: 3000, // Any speed in milliseconds, time between each slide animation. e.g. how regular is fades.
+loop: true, // or false
+indicatorColor: '#FFFFFF', // using hex colours, change the colour of the carousel indicators.
+startingSlide: 0, // change the starting slide, if you set the starting slide outside the range of your array I'll fix that for you ;)
+```
+
+If these are not set in the HTML Script of the jQuery plugin shown below, it will use the defaults object for the settings.
 
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> <!-- Or local path for jQuery -->
