@@ -3,6 +3,7 @@
 # Contents
 
 * [Next Tasks](#next-tasks)
+* [Introduction](#introduction)
 * [Prerequisities](#prerequisities)
 * [Installation](#installation)
 * [Usage](#usage)
@@ -20,10 +21,12 @@
 - [ ] Finish JS usage in Readme
 - [x] Set starting slide if undefined.
 - [ ] Allow more customisation of the Carousel through jQuery options.
-- [ ] Re-factor and optimise SASS.
+- [x] Re-factor and optimise SASS.
 - [ ] Test other image aspect ratios.
-- [ ] Re-structure html for accesability ease.
+- [x] Re-structure html for accesability ease.
 - [x] Fully functional prototype.
+
+# Introduction
 
 View here:
 
