@@ -5,13 +5,14 @@
 
   var pluginName = "CarouselController",
     defaults = {
-      dotsVisible: true,
-      animationType: "slide",
+      dotsVisible: true, // Hides or shows the carousel indicators
+      animationType: "slide", // the default animation type
       animationSpeed: 1000,
       isAutoPlay: true,
       autoPlaySpeed: 3500,
       loop: true,
       indicatorColor: '#ffffff',
+      startingSlide: 0,
     };
 
   function Plugin(element, options) {
@@ -206,10 +207,22 @@
     },
 
     setDefaultStartSlide: function(slides) {
-      console.log("Setting default starting slide");
-      slides[0].id = "current";
-      this.curentSlideIndex = 0;
-      this.enableNextDot(0);
+      var startSlideIndex = this.options.startingSlide; //as it's not being set, it's getting set to 0 automatically, is this bad?
+      if (startSlideIndex < slides.length) {
+        console.log("Setting default starting slide");
+        slides[startSlideIndex].id = "current";
+        this.curentSlideIndex = startSlideIndex;
+        this.enableNextDot(startSlideIndex);
+      } else {
+        try {
+          throw new Error("Starting slide is out of index of the amount of slides.");
+        } catch (e) {
+          console.log(e.name + ': ' + e.message);
+          console.log("Setting starting slide to index 0, the first slide.");
+          this.options.startingSlide = 0;
+          this.setDefaultStartSlide(slides);
+        }
+      }
     },
 
     setActiveSlide: function(currentIndex, nextIndex) {

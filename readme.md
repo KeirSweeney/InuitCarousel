@@ -142,9 +142,25 @@ Below are the default settings for the plugin.
   autoPlaySpeed: 3000,
   loop: true,
   indicatorColor: '#ffffff',
+  startingSlide: 0,
 };
 ```
 Here we query the HTML and add the CarouselController plugin to the ".carousel-outer" class.
+
+Different options are as follows:
+
+```javascript
+dotsVisible: true // or false,
+animationType: crossfade // or slide,
+animationSpeed: 1000, // Any speed in milliseconds, time of the animation. e.g. how fast it fades.
+isAutoPlay: true, // or false
+autoPlaySpeed: 3000, // Any speed in milliseconds, time between each slide animation. e.g. how regular is fades.
+loop: true, // or false
+indicatorColor: '#ffffff', // using hex colours, change the coloud of the carousel indicators.
+startingSlide: 0, // change the starting slide, if you set the starting slide outside the range of your array I'll fix that for you ;)
+```
+
+If these are not set in the HTML Script of the jQuery plugin shown below, it will use the defaults object for the settings.
 
 ```html
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script> <!-- Or local path for jQuery -->
