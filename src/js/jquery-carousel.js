@@ -218,8 +218,8 @@
           throw new Error("Starting slide is out of index of the amount of slides.");
         } catch (e) {
           console.log(e.name + ': ' + e.message);
-          console.log("Setting starting slide to index 0, the first slide.");
-          this.options.startingSlide = 0;
+          console.log("Setting starting slide to index: " + slides.length);
+          this.options.startingSlide = slides.length - 1;
           this.setDefaultStartSlide(slides);
         }
       }
