@@ -25,6 +25,7 @@
 - [ ] Test other image aspect ratios.
 - [x] Re-structure html for accesability ease.
 - [x] Fully functional prototype.
+- [x] Add version tag
 
 # Introduction
 
